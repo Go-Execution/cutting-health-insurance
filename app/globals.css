@@ -1544,3 +1544,895 @@ img {
     opacity: 1;
   }
 }
+
+/* Futurist art direction --------------------------------------------------- */
+
+:root {
+  --ink: #161a17;
+  --ink-soft: #8e9890;
+  --paper: #0e110f;
+  --paper-deep: #171c18;
+  --white: #e9eee7;
+  --accent: #b3cc5f;
+  --accent-dark: #c8dc84;
+  --sage: #677265;
+  --line: rgba(233, 238, 231, 0.16);
+}
+
+body {
+  background: var(--paper);
+  color: var(--white);
+}
+
+body::before {
+  opacity: 0.08;
+  mix-blend-mode: screen;
+}
+
+main {
+  position: relative;
+  overflow: clip;
+}
+
+.ambient-grid {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(179, 204, 95, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(179, 204, 95, 0.05) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, black, transparent 72%);
+}
+
+.site-header {
+  position: sticky;
+  top: 14px;
+  z-index: 6;
+  width: min(calc(100% - 32px), 1360px);
+  min-height: 74px;
+  margin-top: 14px;
+  padding: 0 18px;
+  border: 1px solid rgba(233, 238, 231, 0.18);
+  border-radius: 999px;
+  background: rgba(14, 17, 15, 0.78);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+}
+
+.brand-mark {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-color: var(--accent);
+  border-radius: 0;
+  color: var(--accent);
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  text-indent: -0.01em;
+}
+
+.brand-mark::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border: 1px solid currentColor;
+  top: 3px;
+  right: 3px;
+}
+
+.brand-copy strong,
+.brand-copy small,
+.desktop-nav a,
+.header-call {
+  color: var(--white);
+}
+
+.brand-copy small,
+.eyebrow,
+.section-kicker,
+.service-detail,
+.hero-index,
+.availability,
+.image-caption span,
+.hero-side-note,
+.review-meta,
+.contact-details small,
+.mockup-disclosure strong,
+.form-note {
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+
+.desktop-nav {
+  gap: 8px;
+  padding: 4px;
+  border: 1px solid rgba(233, 238, 231, 0.12);
+  border-radius: 999px;
+}
+
+.desktop-nav a {
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+}
+
+.desktop-nav a:hover {
+  background: rgba(179, 204, 95, 0.12);
+  color: var(--accent);
+}
+
+.header-call {
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid rgba(179, 204, 95, 0.42);
+  border-radius: 999px;
+  color: var(--accent);
+}
+
+.hero {
+  width: min(calc(100% - 32px), 1360px);
+  min-height: calc(100dvh - 102px);
+  grid-template-columns: minmax(0, 1.08fr) minmax(440px, 0.92fr);
+  gap: 0;
+  padding: 44px 0 74px;
+  border-right: 1px solid rgba(233, 238, 231, 0.1);
+  border-left: 1px solid rgba(233, 238, 231, 0.1);
+}
+
+.hero-copy {
+  max-width: none;
+  padding: clamp(46px, 6vw, 92px);
+}
+
+.hero-index {
+  margin-bottom: 52px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  color: rgba(233, 238, 231, 0.42);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+}
+
+.hero h1 {
+  max-width: 8.4ch;
+  font-size: clamp(4.25rem, 7.2vw, 7.8rem);
+  font-weight: 420;
+  letter-spacing: -0.07em;
+  line-height: 0.84;
+}
+
+.hero h1 em {
+  position: relative;
+  color: var(--accent);
+  font-weight: 330;
+}
+
+.hero h1 em::after {
+  position: absolute;
+  right: 0;
+  bottom: 0.02em;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: line-in 900ms 900ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-intro {
+  color: rgba(233, 238, 231, 0.62);
+}
+
+.button-dark {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.button-dark:hover {
+  background: var(--white);
+  color: var(--ink);
+}
+
+.text-link,
+.text-button {
+  border-bottom-color: rgba(233, 238, 231, 0.5);
+  color: var(--white);
+}
+
+.availability {
+  color: rgba(233, 238, 231, 0.48);
+}
+
+.availability-dot {
+  background: var(--accent);
+  box-shadow: 0 0 0 5px rgba(179, 204, 95, 0.1);
+}
+
+.hero-visual {
+  min-height: min(78vh, 820px);
+  border-left: 1px solid rgba(233, 238, 231, 0.12);
+  background-image: linear-gradient(rgba(233, 238, 231, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(233, 238, 231, 0.04) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+.hero-visual::before {
+  position: absolute;
+  top: 26px;
+  right: 26px;
+  z-index: 2;
+  content: "FIG / 001\A ACTIVE PROTECTION FIELD";
+  color: var(--accent);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 9px;
+  line-height: 1.7;
+  letter-spacing: 0.12em;
+  white-space: pre;
+}
+
+.hero-visual::after {
+  position: absolute;
+  top: 12%;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  height: 1px;
+  content: "";
+  background: var(--accent);
+  opacity: 0.34;
+  transform: translateY(0);
+  animation: scan-field 7s ease-in-out infinite;
+}
+
+.hero-image-wrap {
+  inset: 7% 0 7% 8%;
+  border: 1px solid rgba(233, 238, 231, 0.2);
+  background: var(--paper-deep);
+  clip-path: polygon(0 0, 92% 0, 100% 8%, 100% 100%, 8% 100%, 0 92%);
+}
+
+.hero-image {
+  filter: grayscale(1) contrast(1.12) brightness(0.68);
+}
+
+.hero-image-wrap:hover .hero-image {
+  filter: grayscale(1) contrast(1.08) brightness(0.76);
+}
+
+.hero-image-wrap::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: "";
+  background: rgba(179, 204, 95, 0.13);
+  mix-blend-mode: color;
+  pointer-events: none;
+}
+
+.hero-image-wrap::after {
+  background: linear-gradient(180deg, transparent 42%, rgba(8, 11, 9, 0.9) 100%);
+}
+
+.image-caption {
+  color: var(--white);
+}
+
+.image-caption span {
+  color: var(--accent);
+}
+
+.hero-side-note {
+  right: -68px;
+  color: rgba(233, 238, 231, 0.32);
+}
+
+.orbit-stage {
+  bottom: -16px;
+  left: -64px;
+  width: 286px;
+  height: 286px;
+}
+
+.orbit-shell {
+  border-color: rgba(179, 204, 95, 0.5);
+  border-radius: 12%;
+  background: rgba(11, 14, 12, 0.9);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    18px 22px 0 rgba(179, 204, 95, 0.1);
+}
+
+.orbit-shell::before {
+  border-color: rgba(179, 204, 95, 0.25);
+  border-radius: 12%;
+  transform: rotate(45deg);
+}
+
+.orbit-core {
+  border-color: var(--accent);
+  border-radius: 10%;
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.orbit-core small {
+  color: rgba(22, 26, 23, 0.68);
+}
+
+.orbit-line {
+  border-color: rgba(179, 204, 95, 0.42);
+}
+
+.orbit-line-one {
+  animation: orbit-one 18s linear infinite;
+}
+
+.orbit-line-two {
+  animation: orbit-two 14s linear infinite reverse;
+}
+
+.orbit-line-three {
+  animation: orbit-three 22s linear infinite;
+}
+
+.orbit-node {
+  color: var(--accent);
+}
+
+.proof-bar {
+  width: min(calc(100% - 32px), 1360px);
+  border-color: rgba(233, 238, 231, 0.15);
+}
+
+.proof-bar > p {
+  color: var(--accent);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.proof-bar > div {
+  color: rgba(233, 238, 231, 0.54);
+}
+
+.signal-marquee {
+  overflow: hidden;
+  border-bottom: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.signal-marquee > div {
+  width: max-content;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  animation: signal-travel 22s linear infinite;
+}
+
+.signal-marquee i {
+  font-family: var(--font-outfit), "Avenir Next", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 560;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.section-shell {
+  width: min(calc(100% - 32px), 1360px);
+}
+
+.coverage-section {
+  padding-top: clamp(120px, 14vw, 210px);
+}
+
+.section-kicker {
+  border-color: rgba(233, 238, 231, 0.18);
+  color: rgba(233, 238, 231, 0.45);
+}
+
+.coverage-heading {
+  grid-template-columns: 0.45fr 1.55fr;
+  padding: 80px 0 100px;
+}
+
+.coverage-heading h2,
+.contact-info h2 {
+  color: var(--white);
+}
+
+.services-list {
+  border-top-color: var(--accent);
+}
+
+.service-row {
+  position: relative;
+  grid-template-columns: 0.25fr 0.9fr 1fr auto;
+  border-color: rgba(233, 238, 231, 0.14);
+}
+
+.service-row::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: var(--accent);
+  opacity: 0;
+  transform: scaleY(0.04);
+  transform-origin: bottom;
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms ease;
+}
+
+.service-row > * {
+  position: relative;
+  z-index: 1;
+}
+
+.service-row:hover {
+  padding: 0 28px;
+  background: transparent;
+  color: var(--ink);
+}
+
+.service-row:hover::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.service-number,
+.service-detail {
+  color: var(--accent);
+}
+
+.service-row:hover .service-number,
+.service-row:hover .service-detail,
+.service-row:hover > p {
+  color: rgba(22, 26, 23, 0.72);
+}
+
+.service-row h3 {
+  color: var(--white);
+}
+
+.service-row:hover h3 {
+  color: var(--ink);
+}
+
+.service-row > p {
+  color: rgba(233, 238, 231, 0.54);
+}
+
+.service-row > a {
+  border-color: rgba(179, 204, 95, 0.48);
+  color: var(--accent);
+}
+
+.service-row:hover > a {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--white);
+}
+
+.approach-section {
+  position: relative;
+  border-top: 1px solid var(--accent);
+  border-bottom: 1px solid var(--accent);
+  background: var(--white);
+  color: var(--ink);
+}
+
+.approach-section::before {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+  content: "HUMAN / RISK / MAP";
+  color: rgba(22, 26, 23, 0.46);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+}
+
+.approach-image {
+  min-height: 860px;
+  border-right: 1px solid rgba(22, 26, 23, 0.2);
+}
+
+.approach-image img {
+  filter: grayscale(1) contrast(1.12);
+}
+
+.approach-image::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: "";
+  background: rgba(179, 204, 95, 0.16);
+  mix-blend-mode: color;
+}
+
+.approach-image::after {
+  background: linear-gradient(180deg, transparent 50%, rgba(14, 17, 15, 0.88) 100%);
+}
+
+.approach-copy .eyebrow {
+  color: #53611d;
+}
+
+.approach-copy h2 {
+  color: var(--ink);
+}
+
+.approach-lead {
+  color: rgba(22, 26, 23, 0.62);
+}
+
+.process-list {
+  border-color: rgba(22, 26, 23, 0.3);
+}
+
+.process-list li {
+  border-color: rgba(22, 26, 23, 0.2);
+}
+
+.process-list li > span {
+  color: #53611d;
+}
+
+.process-list p {
+  color: rgba(22, 26, 23, 0.58);
+}
+
+.review-section {
+  grid-template-columns: 0.35fr 1.65fr 0.55fr;
+  border-right: 1px solid rgba(233, 238, 231, 0.1);
+  border-left: 1px solid rgba(233, 238, 231, 0.1);
+}
+
+.review-meta,
+.review-section blockquote footer,
+.review-aside p {
+  color: rgba(233, 238, 231, 0.48);
+}
+
+.stars,
+.review-section blockquote > svg,
+.review-aside a {
+  color: var(--accent);
+}
+
+.review-aside {
+  border-color: rgba(233, 238, 231, 0.18);
+}
+
+.contact-section {
+  border-top: 1px solid rgba(179, 204, 95, 0.48);
+  background: #141815;
+  color: var(--white);
+}
+
+.contact-info {
+  border-color: rgba(233, 238, 231, 0.16);
+}
+
+.contact-info > p:not(.eyebrow),
+.contact-details small,
+.mockup-disclosure p,
+.form-note,
+.form-success > p:not(.eyebrow) {
+  color: rgba(233, 238, 231, 0.52);
+}
+
+.contact-details,
+.contact-details > a,
+.contact-details > div,
+.mockup-disclosure {
+  border-color: rgba(233, 238, 231, 0.16);
+}
+
+.contact-details a:hover {
+  color: var(--accent);
+}
+
+.home-image {
+  border: 1px solid rgba(233, 238, 231, 0.2);
+  clip-path: polygon(0 0, 94% 0, 100% 12%, 100% 100%, 6% 100%, 0 88%);
+}
+
+.home-image img {
+  filter: grayscale(1) contrast(1.12) brightness(0.78);
+}
+
+.mockup-disclosure strong,
+.contact-form label b {
+  color: var(--accent);
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  border-color: rgba(233, 238, 231, 0.24);
+  background: rgba(233, 238, 231, 0.02);
+  color: var(--white);
+}
+
+.contact-form select option {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent);
+  background: rgba(179, 204, 95, 0.06);
+}
+
+.contact-form textarea::placeholder {
+  color: rgba(233, 238, 231, 0.32);
+}
+
+.form-success h3 {
+  color: var(--white);
+}
+
+.form-success a {
+  color: var(--accent);
+}
+
+.site-footer {
+  width: min(calc(100% - 32px), 1360px);
+}
+
+.site-footer > p,
+.site-footer > small,
+.footer-links a {
+  color: rgba(233, 238, 231, 0.48);
+}
+
+.site-footer > small {
+  border-color: rgba(233, 238, 231, 0.14);
+}
+
+@keyframes line-in {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes scan-field {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  20%,
+  80% {
+    opacity: 0.32;
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(520px);
+  }
+}
+
+@keyframes signal-travel {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes orbit-one {
+  from {
+    transform: translate(-50%, -50%) rotate(18deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(378deg);
+  }
+}
+
+@keyframes orbit-two {
+  from {
+    transform: translate(-50%, -50%) rotate(78deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(438deg);
+  }
+}
+
+@keyframes orbit-three {
+  from {
+    transform: translate(-50%, -50%) rotate(138deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(498deg);
+  }
+}
+
+@media (max-width: 1100px) {
+  .hero {
+    grid-template-columns: minmax(0, 0.96fr) minmax(400px, 1.04fr);
+  }
+
+  .hero-copy {
+    padding: 48px;
+  }
+
+  .orbit-stage {
+    left: -32px;
+    width: 240px;
+    height: 240px;
+  }
+}
+
+@media (max-width: 820px) {
+  .ambient-grid {
+    background-size: 40px 40px;
+  }
+
+  .site-header,
+  .hero,
+  .proof-bar,
+  .section-shell,
+  .site-footer {
+    width: min(calc(100% - 24px), 1360px);
+  }
+
+  .site-header {
+    top: 8px;
+    min-height: 66px;
+    margin-top: 8px;
+    padding: 0 9px 0 13px;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+  }
+
+  .header-call {
+    min-height: 46px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 24px;
+  }
+
+  .hero-copy {
+    padding: 64px 18px 24px;
+  }
+
+  .hero-index {
+    margin-bottom: 40px;
+  }
+
+  .hero h1 {
+    max-width: 9ch;
+    font-size: clamp(3.55rem, 15vw, 6.2rem);
+  }
+
+  .hero-visual {
+    min-height: 640px;
+    border-top: 1px solid rgba(233, 238, 231, 0.12);
+    border-left: 0;
+  }
+
+  .hero-image-wrap {
+    inset: 7% 0 8%;
+  }
+
+  .orbit-stage {
+    bottom: 0;
+    left: 18px;
+  }
+
+  .proof-bar {
+    padding: 28px 0;
+  }
+
+  .coverage-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .service-row {
+    grid-template-columns: 40px 1fr auto;
+  }
+
+  .service-row:hover {
+    padding: 30px 12px;
+  }
+
+  .approach-image {
+    min-height: 620px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(22, 26, 23, 0.2);
+  }
+
+  .review-section {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info {
+    border-color: rgba(233, 238, 231, 0.16);
+  }
+
+  .mobile-dock {
+    border-color: rgba(179, 204, 95, 0.42);
+    background: rgba(14, 17, 15, 0.94);
+  }
+
+  .mobile-dock a:last-child {
+    background: var(--accent);
+    color: var(--ink);
+  }
+}
+
+@media (max-width: 560px) {
+  .brand-copy small {
+    display: none;
+  }
+
+  .hero-copy {
+    padding-top: 52px;
+  }
+
+  .hero-index {
+    font-size: 8px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.25rem, 16vw, 4.8rem);
+  }
+
+  .hero-visual {
+    min-height: 520px;
+  }
+
+  .hero-visual::before {
+    top: 16px;
+    right: 14px;
+  }
+
+  .orbit-stage {
+    width: 190px;
+    height: 190px;
+  }
+
+  .signal-marquee > div {
+    min-height: 48px;
+  }
+
+  .coverage-section {
+    padding-top: 110px;
+  }
+
+  .coverage-heading h2,
+  .contact-info h2,
+  .approach-copy h2 {
+    font-size: clamp(2.75rem, 13vw, 4rem);
+  }
+
+  .service-row > a {
+    min-width: 82px;
+  }
+
+  .approach-image {
+    min-height: 500px;
+  }
+}

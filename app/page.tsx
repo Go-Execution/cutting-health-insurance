@@ -54,6 +54,7 @@ const amenities = [
 export default function Home() {
   return (
     <main>
+      <div className="ambient-grid" aria-hidden="true" />
       <header className="site-header">
         <a className="brand" href="#top" aria-label="David Cutting Insurance Services home">
           <span className="brand-mark" aria-hidden="true">DC</span>
@@ -77,13 +78,17 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow reveal reveal-one">Personal guidance in Upland, California</p>
+          <div className="hero-index reveal reveal-one" aria-hidden="true">
+            <span>DC / 34.0975° N</span>
+            <span>117.6484° W / 2026</span>
+          </div>
+          <p className="eyebrow reveal reveal-one">Protection protocol / Upland, California</p>
           <h1 className="reveal reveal-two">
-            Insurance that fits the life you are <em>actually building.</em>
+            Cover the <em>future</em> you are already building.
           </h1>
           <p className="hero-intro reveal reveal-three">
-            David Cutting helps individuals, families, and local businesses make sense of life,
-            auto, home, and business coverage—one clear conversation at a time.
+            David Cutting turns life, auto, home, and business risk into a coverage plan you can
+            understand—one direct conversation at a time.
           </p>
           <div className="hero-actions reveal reveal-four">
             <a className="button button-dark" href="tel:+19099858098">
@@ -113,18 +118,18 @@ export default function Home() {
               className="hero-image"
             />
             <div className="image-caption">
-              <span>Local advice</span>
-              <strong>Built around your needs</strong>
+              <span>Human counsel / system 01</span>
+              <strong>Calibrated around your needs</strong>
             </div>
           </div>
           <CoverageOrbit />
         </div>
 
-        <p className="hero-side-note" aria-hidden="true">Clarity before coverage</p>
+        <p className="hero-side-note" aria-hidden="true">Clarity / before / coverage</p>
       </section>
 
       <section className="proof-bar" aria-label="Office amenities">
-        <p>Practical service, in person or by phone</p>
+        <p>Service infrastructure / in person or by phone</p>
         <div>
           {amenities.map((amenity) => (
             <span key={amenity}>
@@ -135,15 +140,24 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="signal-marquee" aria-hidden="true">
+        <div>
+          <span>Life / Auto / Home / Business</span>
+          <i>Protection built around real lives</i>
+          <span>Life / Auto / Home / Business</span>
+          <i>Protection built around real lives</i>
+        </div>
+      </div>
+
       <section className="coverage-section section-shell" id="coverage">
         <div className="section-kicker">
-          <span>Coverage / 01—04</span>
+          <span>Coverage matrix / 01—04</span>
           <p>Four essentials. One person who can help you see the whole picture.</p>
         </div>
 
         <div className="coverage-heading">
           <p className="eyebrow">What David offers</p>
-          <h2>Good coverage starts with the right questions.</h2>
+          <h2>Four protection systems. Calibrated to one life.</h2>
         </div>
 
         <div className="services-list">
@@ -176,8 +190,8 @@ export default function Home() {
         </div>
 
         <div className="approach-copy">
-          <p className="eyebrow">A more human process</p>
-          <h2>No forms-first maze. Start with a conversation.</h2>
+          <p className="eyebrow">Human intelligence / first</p>
+          <h2>Start with the person. Then map the risk.</h2>
           <p className="approach-lead">
             Insurance can get complicated quickly. David starts by understanding what you own,
             how you work, and where uncertainty is costing you peace of mind.
@@ -241,8 +255,8 @@ export default function Home() {
 
       <section className="contact-section" id="contact">
         <div className="contact-info">
-          <p className="eyebrow">Start here</p>
-          <h2>Bring the question. Leave with a clearer next step.</h2>
+          <p className="eyebrow">Open a channel</p>
+          <h2>Let&apos;s map what needs protection.</h2>
           <p>
             Call for a free consultation or leave a few details. There is no pressure to know
             exactly what coverage you need before you get in touch.
@@ -281,6 +295,7 @@ export default function Home() {
               src="/images/home-keys.jpg"
               alt="A couple holding the keys to their new home"
               fill
+              loading="eager"
               sizes="(max-width: 767px) 100vw, 42vw"
             />
           </div>
