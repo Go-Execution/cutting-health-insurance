@@ -9,9 +9,9 @@ export function Footer() {
             <Image
               src="/images/david-cutting-logo.png"
               alt="David Cutting Insurance Services"
-              width={1340}
-              height={320}
-              className="h-9 w-auto object-contain sm:h-10"
+              width={1295}
+              height={766}
+              className="h-14 w-auto object-contain sm:h-16"
             />
             <p className="text-sm text-ink-muted">
               David Cutting Insurance Services · Independent Broker · CA License

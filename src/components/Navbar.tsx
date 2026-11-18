@@ -16,19 +16,19 @@ export function Navbar() {
       <header className="sticky top-0 z-40 border-b border-border-subtle bg-white/95 backdrop-blur-md">
         <div
           data-agent="nav-bar"
-          className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8"
+          className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8"
         >
           <a
             href="#top"
-            className="flex shrink-0 items-center rounded-lg py-1 transition-opacity duration-150 hover:opacity-85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            className="flex shrink-0 items-center rounded-lg py-0.5 transition-opacity duration-150 hover:opacity-85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
             <Image
               src="/images/david-cutting-logo.png"
               alt="David Cutting Insurance"
-              width={1340}
-              height={320}
+              width={1295}
+              height={766}
               priority
-              className="h-9 w-auto object-contain sm:h-10 md:h-12"
+              className="h-12 w-auto object-contain sm:h-14 md:h-[68px]"
             />
           </a>
 
