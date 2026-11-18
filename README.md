@@ -1,27 +1,36 @@
-# David Cutting Insurance Services — redesign mockup
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-A one-page Next.js redesign using content verified from the [current UENI website](https://david-cutting-insurance-services.ueniweb.com/).
+## Getting Started
 
-## Local development
+First, run the development server:
 
 ```bash
-npm install
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-Production checks:
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```bash
-npm run lint
-npm run build
-```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Mockup status
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-- The contact form intentionally does not transmit personal data.
-- Before publication, connect a secure form endpoint and add verified licensing, carrier, privacy, and policy disclosures supplied by the business owner.
-- Phone, address, opening hours, services, amenities, and the review excerpt were carried over from the source website.
+## Learn More
 
-## Photography
+To learn more about Next.js, take a look at the following resources:
 
-Free-to-use Pexels photography by Kampus Production, Tima Miroshnichenko, and RDNE Stock project. Images are stored locally in `public/images` for predictable delivery.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
