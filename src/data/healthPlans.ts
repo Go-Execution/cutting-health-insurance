@@ -9,12 +9,12 @@ export interface HealthPlanCategory {
   code: string;
   shortLabel: string;
   title: string;
-  audience: string;
+  subtitle: string;
   summary: string;
   formOption: string;
-  planStructures: string[];
-  whatDavidChecks: string[];
-  idealFor: string;
+  image: string;
+  imageAlt: string;
+  highlights: string[];
 }
 
 export const HEALTH_PLAN_CATEGORIES: HealthPlanCategory[] = [
@@ -22,77 +22,73 @@ export const HEALTH_PLAN_CATEGORIES: HealthPlanCategory[] = [
     id: "individual",
     code: "01",
     shortLabel: "Individual & Family",
-    title: "Individual & Family Health",
-    audience: "Covered California and off-exchange plans",
+    title: "Individual & Family Health Plans",
+    subtitle: "Covered California and direct carrier options",
     summary:
-      "Compare Bronze, Silver, Gold, and Platinum medical plans side by side so your monthly premium and out-of-pocket limit match how your household actually uses care.",
+      "Compare Bronze, Silver, Gold, and Platinum medical plans side by side so your monthly premium and annual out-of-pocket limit fit how your household actually uses care.",
     formOption: "Individual & Family Health",
-    planStructures: ["HMO", "PPO", "EPO", "HSA Eligible"],
-    whatDavidChecks: [
-      "Covered California premium tax credit and CSR silver savings eligibility",
-      "Whether your Inland Empire primary doctor and specialists are in network",
-      "Tier placement and annual cost for your family's current prescriptions",
-      "Qualifying Life Event deadlines after a job change, move, or marriage",
+    image: "/images/hero-consultation.jpg",
+    imageAlt:
+      "Health insurance advisor reviewing individual medical plan comparisons with a California couple",
+    highlights: [
+      "Verify Inland Empire doctors and medical groups",
+      "Check Covered California premium tax credits",
+      "Compare HMO, EPO, PPO, and HSA-eligible tiers",
     ],
-    idealFor:
-      "Self-employed Californians, households between employer plans, and families buying on or off the state marketplace.",
   },
   {
     id: "medicare",
     code: "02",
     shortLabel: "Medicare & Seniors",
-    title: "Medicare & Senior Coverage",
-    audience: "Turning 65, Advantage, Medigap, and Part D",
+    title: "Medicare, Medigap & Part D",
+    subtitle: "Turning 65 and annual plan reviews",
     summary:
-      "Sort out Original Medicare, Medigap supplements, and Medicare Advantage plans without getting lost in mailers, hidden network rules, or late-enrollment penalties.",
+      "Understand Original Medicare, Medigap Supplement Plan G and N, and Medicare Advantage plans clearly so you avoid penalties and keep preferred doctors.",
     formOption: "Medicare & Senior Plans",
-    planStructures: ["Medigap Plan G & N", "Medicare Advantage", "Part D Rx", "Part B Timing"],
-    whatDavidChecks: [
-      "Hospital and medical group access across San Bernardino and LA counties",
-      "Total yearly prescription drug expense across preferred pharmacies",
-      "Tradeoffs between lower-premium Advantage plans and open-network Medigap",
-      "Initial Enrollment Period and Annual Enrollment Period dates",
+    image: "/images/california-couple.jpg",
+    imageAlt:
+      "Smiling couple in their 60s walking along a sunlit tree-lined sidewalk in Southern California",
+    highlights: [
+      "Compare Medigap open access vs. Advantage networks",
+      "Check prescription drug formularies at your pharmacy",
+      "Time Part B and employer transitions accurately",
     ],
-    idealFor:
-      "Adults approaching age 65, retirees leaving employer coverage, and current beneficiaries reviewing annual plan changes.",
   },
   {
     id: "group",
     code: "03",
     shortLabel: "Small Business",
-    title: "Small Business Group Health",
-    audience: "California employers with 1 to 100 team members",
+    title: "Small Business Group Benefits",
+    subtitle: "California employer teams of 1 to 100",
     summary:
-      "Offer competitive medical, dental, and vision benefits that help you hire and retain local staff while keeping your company contribution predictable.",
+      "Offer dependable medical, dental, and vision coverage that helps you attract local talent while keeping employer payroll contributions predictable.",
     formOption: "Small Business Group Health",
-    planStructures: ["Small Group PPO & HMO", "Dual-Option Tiers", "Section 125", "Employee Onboarding"],
-    whatDavidChecks: [
-      "Employer contribution minimums and budget scenarios across tier levels",
-      "Multi-plan options so staff can pick between lower premiums or wider PPO access",
-      "Clean annual renewal comparisons before automatic rate increases lock in",
-      "Direct support for employee enrollment, additions, and COBRA questions",
+    image: "/images/guide-advisor-desk.jpg",
+    imageAlt:
+      "Advisor sitting at a modern desk reviewing small business employee health benefit choices",
+    highlights: [
+      "Structure employer contribution tiers cleanly",
+      "Offer dual-option HMO and PPO employee choices",
+      "Ongoing renewal reviews and staff onboarding help",
     ],
-    idealFor:
-      "Upland and Inland Empire small business owners, family practices, trades, and growing teams setting up or renewing group benefits.",
   },
   {
     id: "supplemental",
     code: "04",
     shortLabel: "Dental & Vision",
-    title: "Dental, Vision & Supplemental",
-    audience: "Standalone care and out-of-pocket protection",
+    title: "Dental, Vision & Supplemental Care",
+    subtitle: "Everyday preventive care and deductible protection",
     summary:
-      "Pair your medical plan with affordable dental, vision, accident, or hospital indemnity protection so routine cleanings and surprise bills stay manageable.",
+      "Round out your medical coverage with PPO dental, routine vision, accident, and hospital indemnity plans built to keep surprise bills manageable.",
     formOption: "Dental, Vision & Supplemental",
-    planStructures: ["PPO Dental", "Vision Care", "Hospital Indemnity", "Accident Cover"],
-    whatDavidChecks: [
-      "Waiting periods on crowns, root canals, and major dental procedures",
-      "Annual maximums and local dentist participation before you enroll",
-      "Frame, lens, and contact allowances tailored to your yearly eye exams",
-      "Cash-benefit supplements that offset high Bronze or HSA deductibles",
+    image: "/images/guide-family-group.jpg",
+    imageAlt:
+      "Multi-generational California family smiling together outdoors on a sunny patio",
+    highlights: [
+      "Check dentist networks and major-service waiting periods",
+      "Predictable frame, lens, and annual eye exam benefits",
+      "Cash-benefit coverage alongside Bronze or HSA plans",
     ],
-    idealFor:
-      "Individuals on Medicare Original, high-deductible medical policyholders, and families wanting predictable dental and eye care.",
   },
 ];
 
@@ -104,148 +100,71 @@ export const CONSULTATION_OPTIONS = [
   "I am not sure which plan fits yet",
 ] as const;
 
-export interface ProcessStep {
-  number: string;
+export interface ResourceGuide {
+  id: string;
+  tag: string;
   title: string;
-  detail: string;
-}
-
-export const ADVISORY_STEPS: ProcessStep[] = [
-  {
-    number: "01",
-    title: "Start with your doctors and prescriptions",
-    detail:
-      "Before comparing prices, we list the clinics, specialists, and medications you rely on so we filter out plans that would force an unexpected switch.",
-  },
-  {
-    number: "02",
-    title: "Compare full-year cost, not just the monthly bill",
-    detail:
-      "A low monthly premium with a high deductible can cost more over twelve months. We walk through copays, deductibles, and out-of-pocket caps side by side.",
-  },
-  {
-    number: "03",
-    title: "Enroll accurately and keep a local point of contact",
-    detail:
-      "Get help submitting your application cleanly during Open Enrollment or a Qualifying Life Event, then call the Upland office whenever life or prescriptions change.",
-  },
-];
-
-export interface EnrollmentWindow {
-  label: string;
-  dates: string;
-  note: string;
-}
-
-export const ENROLLMENT_WINDOWS: EnrollmentWindow[] = [
-  {
-    label: "Covered California Open Enrollment",
-    dates: "Nov 1 to Jan 31",
-    note: "Enroll or switch individual and family plans for the coming year.",
-  },
-  {
-    label: "Medicare Annual Enrollment",
-    dates: "Oct 15 to Dec 7",
-    note: "Review Advantage and Part D drug formularies for next year's changes.",
-  },
-  {
-    label: "Special Enrollment Window",
-    dates: "60 days from event",
-    note: "Available year-round after losing job coverage, moving, or adding a dependent.",
-  },
-];
-
-export interface PrepTrack {
-  id: "individual" | "medicare" | "employer";
-  label: string;
-  headline: string;
+  excerpt: string;
+  image: string;
+  imageAlt: string;
+  readTime: string;
+  keyTakeaways: string[];
   formOption: string;
-  checklist: { id: string; text: string; reason: string }[];
 }
 
-export const PREP_TRACKS: PrepTrack[] = [
+export const RESOURCE_GUIDES: ResourceGuide[] = [
   {
-    id: "individual",
-    label: "Individual or Family",
-    headline: "What helps us quote Covered California and off-exchange plans fast",
+    id: "five-checks",
+    tag: "Plan Selection",
+    title: "5 Things You Should Check Before Choosing Health Insurance",
+    excerpt:
+      "Choosing the right health plan starts before comparing monthly premiums. Check doctor networks, drug tiers, and annual caps first.",
+    image: "/images/guide-advisor-desk.jpg",
+    imageAlt:
+      "Health insurance advisor discussing coverage documents with two clients at an office desk",
+    readTime: "3 min read",
     formOption: "Individual & Family Health",
-    checklist: [
-      {
-        id: "ind-zip",
-        text: "ZIP code and household member ages",
-        reason: "California pricing and clinic networks vary directly by county and age.",
-      },
-      {
-        id: "ind-income",
-        text: "Estimated household MAGI income for the year",
-        reason: "Determines eligibility for monthly federal and state premium tax credits.",
-      },
-      {
-        id: "ind-doctors",
-        text: "Preferred doctors, medical group, or hospital",
-        reason: "Lets us verify HMO vs. PPO participation before you commit.",
-      },
-      {
-        id: "ind-rx",
-        text: "Current prescription names and dosages",
-        reason: "Prevents surprise drug-tier copays after your policy starts.",
-      },
+    keyTakeaways: [
+      "Confirm both your primary physician and preferred medical group participate in the exact network ID, not just the carrier brand.",
+      "Look up every ongoing prescription in the plan's drug formulary to spot tier 3 or specialty copays early.",
+      "Compare the annual out-of-pocket maximum alongside twelve months of premiums to see your true worst-case cost.",
+      "Verify whether your household income qualifies for Covered California monthly tax credits or Silver CSR savings.",
+      "Check if a Qualifying Life Event gives you a 60-day Special Enrollment window outside November to January.",
     ],
   },
   {
-    id: "medicare",
-    label: "Turning 65 or Medicare",
-    headline: "What to gather before your Medicare or Medigap review",
+    id: "family-budget",
+    tag: "Family Coverage",
+    title: "How To Protect Your Family's Health On Any Budget",
+    excerpt:
+      "Quality family coverage does not require overpaying for unused benefits. Learn how to balance monthly cost with real medical access.",
+    image: "/images/guide-family-group.jpg",
+    imageAlt:
+      "Multi-generational family smiling together outdoors in bright California daylight",
+    readTime: "4 min read",
+    formOption: "Individual & Family Health",
+    keyTakeaways: [
+      "Separate routine preventive visits (covered at $0 in-network) from emergency and specialist scenarios when sizing deductibles.",
+      "Compare HMO vs. PPO pricing carefully: an HMO tied to a strong local Inland Empire medical group can save thousands per year.",
+      "Consider pairing an HSA-compatible Bronze plan with supplemental accident coverage if your family rarely visits specialists.",
+      "Review household coverage every autumn during Open Enrollment before automatic renewals take effect.",
+    ],
+  },
+  {
+    id: "medicare-guide",
+    tag: "Medicare Timing",
+    title: "A Simple Guide To Medicare Timing And Plan Choices",
+    excerpt:
+      "Turning 65 or retiring off employer health insurance comes with strict windows. Follow clear steps to avoid penalties.",
+    image: "/images/california-couple.jpg",
+    imageAlt:
+      "Active smiling senior couple walking together along a sunlit California street",
+    readTime: "4 min read",
     formOption: "Medicare & Senior Plans",
-    checklist: [
-      {
-        id: "med-card",
-        text: "Medicare Part A and Part B effective dates",
-        reason: "Anchors your guaranteed-issue Medigap and Advantage enrollment windows.",
-      },
-      {
-        id: "med-doctors",
-        text: "Primary physician and specialist names",
-        reason: "Confirms whether your Inland Empire doctors accept a specific Advantage network.",
-      },
-      {
-        id: "med-rx",
-        text: "Exact medication list and preferred pharmacy",
-        reason: "Identifies which Part D or Advantage plan keeps annual drug costs lowest.",
-      },
-      {
-        id: "med-employer",
-        text: "Current employer or retiree plan summary",
-        reason: "Helps avoid Part B or Part D late penalties when transitioning off work coverage.",
-      },
-    ],
-  },
-  {
-    id: "employer",
-    label: "Small Business Owner",
-    headline: "What we use to build a small-group health quote",
-    formOption: "Small Business Group Health",
-    checklist: [
-      {
-        id: "emp-census",
-        text: "Employee census (ages or birthdates and ZIP codes)",
-        reason: "Required by California carriers to calculate accurate small-group composite rates.",
-      },
-      {
-        id: "emp-budget",
-        text: "Target monthly employer contribution per employee",
-        reason: "Helps us balance employee affordability with predictable company payroll cost.",
-      },
-      {
-        id: "emp-renewal",
-        text: "Current group plan billing summary (if renewing)",
-        reason: "Gives a clear baseline to test alternative carriers and benefit tiers.",
-      },
-      {
-        id: "emp-lines",
-        text: "Interest in adding dental, vision, or life riders",
-        reason: "Bundled ancillary coverage often strengthens recruiting at low marginal cost.",
-      },
+    keyTakeaways: [
+      "Mark your 7-month Initial Enrollment Period around your 65th birthday unless you have creditable active employer coverage.",
+      "Weigh nationwide provider flexibility under Medigap Plan G against lower monthly premiums in local Medicare Advantage plans.",
+      "Run your exact medication list each fall between October 15 and December 7 because Part D formularies update every year.",
     ],
   },
 ];
@@ -259,32 +178,20 @@ export interface FaqItem {
 export const HEALTH_FAQS: FaqItem[] = [
   {
     id: "cost-broker",
-    question: "Does it cost extra to work with a local health insurance broker?",
+    question: "Does it cost extra to work with David Cutting Insurance?",
     answer:
-      "No. Health insurance premiums in California are standardized by law, meaning you pay the exact same monthly rate whether you enroll directly with a carrier, through Covered California, or with guidance from David Cutting. Your consultation is free.",
-  },
-  {
-    id: "hmo-vs-ppo",
-    question: "How do I decide between an HMO, EPO, and PPO health plan?",
-    answer:
-      "HMO plans usually offer lower premiums and predictable copays when you coordinate care through a primary care doctor in one medical group. EPO and PPO plans give more direct access to specialists without referrals, and PPO plans include partial coverage for out-of-network providers. During your consultation, we check where your actual doctors sit before recommending a structure.",
+      "No. California health insurance rates are set by the carrier and state marketplace, so your monthly premium is identical whether you enroll on your own or with David's help. Consultations are free.",
   },
   {
     id: "outside-open-enrollment",
-    question: "Can I get health insurance outside Open Enrollment?",
+    question: "Can I enroll in a health plan outside Open Enrollment?",
     answer:
-      "Yes, if you experience a Qualifying Life Event such as losing job-based insurance, turning 26, moving to a new ZIP code, getting married, or welcoming a child. Most Special Enrollment windows last 60 days. Small businesses can also start group coverage during any month of the year.",
-  },
-  {
-    id: "medicare-supplement-vs-advantage",
-    question: "What is the main difference between Medigap and Medicare Advantage?",
-    answer:
-      "Medigap (Medicare Supplement) pairs with Original Medicare so you can visit any provider nationwide who accepts Medicare, usually with a higher monthly premium and very few out-of-pocket medical bills. Medicare Advantage bundles Part A, Part B, and often Part D into a local network plan with low or zero monthly premiums and copays as you use care.",
+      "Yes, if you have a Qualifying Life Event such as losing job coverage, moving, getting married, or turning 26 (usually a 60-day window). Small business group health plans can start any month.",
   },
   {
     id: "in-person-upland",
-    question: "Can we meet in person in Upland or review everything by phone?",
+    question: "Can we meet in person in Upland or review options by phone?",
     answer:
-      "Both options are available Monday through Friday from 9:00 AM to 5:30 PM. You can call (909) 985-8098 for a phone walkthrough or visit the office at 163 S Euclid Ave, Upland, CA 91786, which has parking and wheelchair-accessible entry.",
+      "Both options are available Monday to Friday from 9:00 AM to 5:30 PM. Call (909) 985-8098 or visit 163 S Euclid Ave, Upland, CA 91786, with free parking and wheelchair-accessible entry.",
   },
 ];

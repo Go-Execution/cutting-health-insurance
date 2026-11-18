@@ -3,11 +3,9 @@
 import { useRef, useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
-import { CoverageExplorer } from "@/components/CoverageExplorer";
-import { AdvisoryProcess } from "@/components/AdvisoryProcess";
-import { PrepChecklistTool } from "@/components/PrepChecklistTool";
-import { FaqSection } from "@/components/FaqSection";
-import { LocalTrustBanner } from "@/components/LocalTrustBanner";
+import { AboutSection } from "@/components/AboutSection";
+import { CoverageShowcase } from "@/components/CoverageShowcase";
+import { ResourcesSection } from "@/components/ResourcesSection";
 import { ConsultationSection } from "@/components/ConsultationSection";
 import { Footer } from "@/components/Footer";
 
@@ -44,11 +42,9 @@ export function HealthRedesignPage() {
 
       <main id="main-content" className="flex-1">
         <HeroSection />
-        <CoverageExplorer onSelectPlanForConsultation={jumpToConsultation} />
-        <AdvisoryProcess />
-        <PrepChecklistTool onApplyPrepToConsultation={jumpToConsultation} />
-        <FaqSection />
-        <LocalTrustBanner />
+        <AboutSection />
+        <CoverageShowcase onSelectPlanForConsultation={jumpToConsultation} />
+        <ResourcesSection onSelectGuideTopic={jumpToConsultation} />
         <ConsultationSection
           selectedPlan={selectedPlan}
           onSelectedPlanChange={setSelectedPlan}

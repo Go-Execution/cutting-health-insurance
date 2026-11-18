@@ -1,15 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --canvas: #f6f8f7;
+  --canvas: #ffffff;
   --surface: #ffffff;
-  --surface-soft: #ebf1ee;
-  --border-subtle: #d8e2dd;
-  --ink: #0f241e;
-  --ink-muted: #4a5d57;
-  --accent: #0f766e;
-  --accent-hover: #115e59;
-  --accent-soft: #e6f4f1;
+  --surface-soft: #f4f7fb;
+  --navy: #07254e;
+  --navy-soft: #0d3369;
+  --border-subtle: #dde5f0;
+  --ink: #0a0d12;
+  --ink-muted: #4b5563;
+  --accent: #004a98;
+  --accent-hover: #003875;
+  --accent-soft: #eaf2fc;
   --error: #b91c1c;
   --error-bg: #fef2f2;
   --valid: #15803d;
@@ -19,19 +21,20 @@
   --color-canvas: var(--canvas);
   --color-surface: var(--surface);
   --color-surface-soft: var(--surface-soft);
+  --color-navy: var(--navy);
+  --color-navy-soft: var(--navy-soft);
   --color-border-subtle: var(--border-subtle);
   --color-ink: var(--ink);
   --color-ink-muted: var(--ink-muted);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-accent-soft: var(--accent-soft);
-  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 6.5rem;
+  scroll-padding-top: 5.5rem;
   color-scheme: light;
 }
 
@@ -48,7 +51,7 @@ body {
   overflow-x: clip;
 }
 
-/* Visually hidden live region and labels while keeping them in the accessibility tree */
+/* Visually hidden live region and skip links while remaining in the accessibility tree */
 .visually-hidden:where(:not(:focus-within, :active)) {
   position: absolute !important;
   clip-path: inset(50%) !important;

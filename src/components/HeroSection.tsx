@@ -1,118 +1,106 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "motion/react";
-import { ArrowDownRight, Heartbeat, Phone } from "@phosphor-icons/react";
-
-const PILLARS = [
-  "Covered California",
-  "Medicare & Medigap",
-  "Small Group",
-  "Dental & Vision",
-] as const;
+import { ArrowUpRight, Phone } from "@phosphor-icons/react";
 
 export function HeroSection() {
-  const shouldReduceMotion = useReducedMotion();
-
-  const fadeUp = shouldReduceMotion
-    ? { initial: { opacity: 1, y: 0 }, animate: { opacity: 1, y: 0 } }
-    : {
-        initial: { opacity: 0, y: 16 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const },
-      };
-
   return (
     <section
       id="top"
       data-agent="hero-section"
-      className="px-4 pt-12 pb-16 sm:px-6 md:pt-16 md:pb-24"
+      className="bg-white px-4 pt-4 pb-10 sm:px-6 sm:pt-6 sm:pb-14 lg:px-8"
     >
-      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
-        <motion.div
-          {...fadeUp}
-          className="flex flex-col items-start lg:col-span-6"
-        >
-          <p className="mb-4 font-mono text-xs font-medium tracking-[0.14em] text-accent uppercase">
-            Upland, California · Health Coverage Advisory
-          </p>
+      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-2xl bg-navy sm:rounded-3xl">
+        <div className="relative min-h-[540px] w-full sm:min-h-[600px] lg:min-h-[640px]">
+          <Image
+            src="/images/hero-family.jpg"
+            alt="Smiling California grandfather and child seated together on a sunlit living room sofa"
+            fill
+            priority
+            sizes="(max-width: 1280px) 100vw, 1280px"
+            className="object-cover object-center"
+          />
 
-          <h1 className="max-w-xl text-4xl font-bold tracking-tighter text-ink leading-[1.06] sm:text-5xl md:text-6xl">
-            Health coverage built around real care.
-          </h1>
+          {/* Subtle left-side scrim for crisp white headline legibility */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-r from-[#07254e]/85 via-[#07254e]/45 to-[#07254e]/10"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-t from-[#07254e]/75 via-transparent to-transparent"
+          />
 
-          <p className="mt-6 max-w-[56ch] text-base leading-relaxed text-ink-muted sm:text-lg">
-            David Cutting helps Upland individuals, families, seniors, and small
-            employers compare California health plans without confusion.
-          </p>
+          <div className="relative z-10 flex min-h-[540px] flex-col justify-between p-6 sm:min-h-[600px] sm:p-10 lg:min-h-[640px] lg:p-14">
+            <div className="max-w-2xl pt-2 sm:pt-4">
+              <p className="inline-flex items-center rounded-full border border-white/25 bg-white/15 px-4 py-1.5 text-xs font-medium text-white backdrop-blur-md sm:text-sm">
+                Your health, your family, our commitment to care.
+              </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href="tel:+19099858098"
-              data-agent="hero-call-cta"
-              className="inline-flex min-h-[48px] items-center gap-2.5 rounded-full bg-accent px-6 py-3 text-base font-semibold text-white shadow-sm transition-all duration-150 hover:bg-accent-hover hover:scale-[1.01] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
-            >
-              <Phone size={18} weight="bold" aria-hidden="true" />
-              <span>Call (909) 985-8098</span>
-            </a>
+              <h1 className="mt-6 text-4xl font-semibold tracking-tight text-white leading-[1.08] sm:text-5xl lg:text-6xl">
+                Your Health Deserves The Best Protection
+              </h1>
 
-            <a
-              href="#coverage"
-              data-agent="hero-explore-cta"
-              className="inline-flex min-h-[48px] items-center gap-2 rounded-full border border-border-subtle bg-surface px-6 py-3 text-base font-medium text-ink transition-all duration-150 hover:bg-surface-soft hover:scale-[1.01] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
-            >
-              <span>Explore health plans</span>
-              <ArrowDownRight size={18} weight="bold" aria-hidden="true" />
-            </a>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={
-            shouldReduceMotion
-              ? undefined
-              : { duration: 0.55, delay: 0.08, ease: [0.22, 1, 0.36, 1] as const }
-          }
-          className="relative lg:col-span-6"
-        >
-          <div className="rounded-3xl border border-border-subtle bg-surface p-2.5 shadow-md">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-surface-soft">
-              <Image
-                src="/images/hero-consultation.jpg"
-                alt="A licensed California health insurance advisor reviewing printed medical plan comparisons with a couple in a sunlit Upland office"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
+              <p className="mt-5 max-w-lg text-base leading-relaxed text-white/90 sm:text-lg">
+                Clear guidance for Covered California, Medicare, and small
+                business health plans in Upland, California.
+              </p>
             </div>
 
-            <div className="mt-2.5 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-surface-soft px-4 py-3.5">
-              <div className="flex items-center gap-2.5 text-sm font-semibold text-ink">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-surface text-accent shadow-xs">
-                  <Heartbeat size={18} weight="bold" aria-hidden="true" />
-                </span>
-                <span>Four California health tracks</span>
+            <div className="mt-8 flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href="#contact"
+                  data-agent="hero-quote-cta"
+                  className="inline-flex min-h-[48px] items-center gap-2.5 rounded-full bg-white py-1.5 pr-1.5 pl-5 text-sm font-semibold text-ink shadow-md transition-all duration-150 hover:bg-accent-soft active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+                >
+                  <span>Get Your Quote</span>
+                  <span
+                    aria-hidden="true"
+                    className="flex h-8 w-8 items-center justify-center rounded-full bg-accent text-white"
+                  >
+                    <ArrowUpRight size={15} weight="bold" />
+                  </span>
+                </a>
+
+                <a
+                  href="tel:+19099858098"
+                  data-agent="hero-call-cta"
+                  className="inline-flex min-h-[48px] items-center gap-2 rounded-full border border-white/40 bg-white/15 px-5 py-3 text-sm font-semibold text-white backdrop-blur-md transition-all duration-150 hover:bg-white/25 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+                >
+                  <Phone size={16} weight="bold" aria-hidden="true" />
+                  <span>Call (909) 985-8098</span>
+                </a>
               </div>
 
-              <ul
-                aria-label="Health insurance coverage categories"
-                className="flex flex-wrap gap-1.5"
+              <a
+                href="#contact"
+                className="hidden items-center gap-3.5 rounded-2xl border border-white/25 bg-white/95 p-2.5 pr-4 shadow-lg backdrop-blur-md transition-transform duration-150 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:flex"
               >
-                {PILLARS.map((pillar) => (
-                  <li
-                    key={pillar}
-                    className="rounded-full border border-border-subtle bg-surface px-2.5 py-1 text-xs font-medium text-ink-muted"
-                  >
-                    {pillar}
-                  </li>
-                ))}
-              </ul>
+                <div className="relative h-16 w-24 shrink-0 overflow-hidden rounded-xl bg-surface-soft">
+                  <Image
+                    src="/images/hero-consultation.jpg"
+                    alt="In-person consultation at David Cutting Insurance"
+                    fill
+                    sizes="96px"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="text-left">
+                  <p className="text-xs font-semibold text-accent">
+                    Free Plan Review
+                  </p>
+                  <p className="mt-0.5 text-sm font-semibold text-ink">
+                    Upland Office or Phone
+                  </p>
+                  <p className="mt-0.5 text-xs text-ink-muted">
+                    Mon to Fri, 9:00 AM to 5:30 PM
+                  </p>
+                </div>
+              </a>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

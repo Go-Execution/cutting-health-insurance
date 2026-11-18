@@ -1,55 +1,54 @@
-import { ShieldPlus } from "@phosphor-icons/react/dist/ssr";
+import Image from "next/image";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border-subtle bg-surface pt-12 pb-28 md:pb-12">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <footer className="border-t border-border-subtle bg-white pt-12 pb-28 md:pb-12">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col justify-between gap-8 sm:flex-row sm:items-center">
-          <div className="flex items-center gap-3">
-            <span
-              aria-hidden="true"
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-accent-soft text-accent"
-            >
-              <ShieldPlus size={20} weight="bold" />
-            </span>
-            <div>
-              <p className="text-base font-semibold text-ink">
-                David Cutting Insurance Services
-              </p>
-              <p className="text-sm text-ink-muted">
-                Health insurance guidance at 163 S Euclid Ave, Upland, CA 91786
-              </p>
-            </div>
+          <div className="flex flex-col items-start gap-2">
+            <Image
+              src="/images/david-cutting-logo.png"
+              alt="David Cutting Insurance"
+              width={1340}
+              height={320}
+              className="h-9 w-auto object-contain sm:h-10"
+            />
+            <p className="text-sm text-ink-muted">
+              163 S Euclid Ave, Upland, CA 91786 · (909) 985-8098
+            </p>
           </div>
 
-          <nav aria-label="Footer navigation" className="flex flex-wrap gap-6 text-sm font-medium text-ink-muted">
+          <nav
+            aria-label="Footer navigation"
+            className="flex flex-wrap gap-6 text-sm font-medium text-ink"
+          >
+            <a
+              href="#top"
+              className="rounded-md py-1 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            >
+              Home
+            </a>
+            <a
+              href="#about"
+              className="rounded-md py-1 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            >
+              About
+            </a>
             <a
               href="#coverage"
-              className="rounded-md py-1 transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="rounded-md py-1 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
-              Plans
+              Services
             </a>
             <a
-              href="#approach"
-              className="rounded-md py-1 transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              href="#resources"
+              className="rounded-md py-1 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
-              Process
-            </a>
-            <a
-              href="#prep"
-              className="rounded-md py-1 transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            >
-              Prep List
-            </a>
-            <a
-              href="#faq"
-              className="rounded-md py-1 transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            >
-              FAQ
+              Resources
             </a>
             <a
               href="#contact"
-              className="rounded-md py-1 transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="rounded-md py-1 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               Contact
             </a>
@@ -58,10 +57,10 @@ export function Footer() {
 
         <div className="mt-8 border-t border-border-subtle pt-6 text-xs leading-relaxed text-ink-muted">
           <p>
-            Preview health insurance redesign for David Cutting Insurance
+            Preview health insurance design for David Cutting Insurance
             Services. Add verified California Department of Insurance license
             numbers, carrier appointments, and official privacy disclosures
-            prior to production launch.
+            before production launch.
           </p>
         </div>
       </div>

@@ -2,14 +2,17 @@
 
 import { useEffect, useRef, useState } from "react";
 import {
+  ArrowUpRight,
+  CaretDown,
   CheckCircle,
   Clock,
   Info,
   MapPin,
   Phone,
+  Star,
   WarningCircle,
 } from "@phosphor-icons/react";
-import { CONSULTATION_OPTIONS } from "@/data/healthPlans";
+import { CONSULTATION_OPTIONS, HEALTH_FAQS } from "@/data/healthPlans";
 
 interface ConsultationSectionProps {
   selectedPlan: string;
@@ -18,6 +21,14 @@ interface ConsultationSectionProps {
   onPrefilledNotesChange: (value: string) => void;
   nameInputRef: React.RefObject<HTMLInputElement | null>;
 }
+
+const OFFICE_AMENITIES = [
+  "Free consultation",
+  "In person or by phone",
+  "Wheelchair accessible",
+  "Parking available",
+  "Cards accepted",
+] as const;
 
 export function ConsultationSection({
   selectedPlan,
@@ -248,7 +259,7 @@ export function ConsultationSection({
       id="contact"
       aria-labelledby="contact-heading"
       data-agent="contact-section"
-      className="py-16 sm:py-24"
+      className="border-t border-border-subtle bg-surface-soft py-16 sm:py-24"
     >
       <div
         ref={announcerRef}
@@ -256,23 +267,29 @@ export function ConsultationSection({
         className="visually-hidden"
       />
 
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
           <div className="flex flex-col justify-between gap-8 lg:col-span-5">
             <div>
-              <p className="font-mono text-xs font-medium tracking-[0.14em] text-accent uppercase">
-                Upland Office · Free Consultation
-              </p>
+              <div className="flex items-center gap-2 text-sm font-medium text-ink">
+                <span
+                  aria-hidden="true"
+                  className="inline-block h-2 w-2 rounded-full bg-accent"
+                />
+                <span>Upland Office · Consultation</span>
+              </div>
+
               <h2
                 id="contact-heading"
-                className="mt-3 text-3xl font-bold tracking-tight text-ink sm:text-4xl"
+                className="mt-4 text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
               >
-                Talk through your health plan options directly.
+                Speak directly with David Cutting Insurance.
               </h2>
+
               <p className="mt-4 text-base leading-relaxed text-ink-muted">
-                Call for a direct walkthrough or request a consultation below.
-                You do not need to know which carrier or tier you want before
-                getting in touch.
+                Call for straightforward answers or leave your preferred health
+                coverage topic below. There is zero obligation and no added
+                broker fee.
               </p>
 
               <dl className="mt-8 space-y-5">
@@ -281,7 +298,7 @@ export function ConsultationSection({
                     <Phone size={18} weight="bold" aria-hidden="true" />
                   </span>
                   <div>
-                    <dt className="text-xs font-semibold tracking-wide text-ink-muted uppercase">
+                    <dt className="text-xs font-semibold text-ink-muted uppercase">
                       Phone
                     </dt>
                     <dd className="mt-0.5">
@@ -300,8 +317,8 @@ export function ConsultationSection({
                     <MapPin size={18} weight="bold" aria-hidden="true" />
                   </span>
                   <div>
-                    <dt className="text-xs font-semibold tracking-wide text-ink-muted uppercase">
-                      Upland Office
+                    <dt className="text-xs font-semibold text-ink-muted uppercase">
+                      Office Address
                     </dt>
                     <dd className="mt-0.5">
                       <a
@@ -321,8 +338,8 @@ export function ConsultationSection({
                     <Clock size={18} weight="bold" aria-hidden="true" />
                   </span>
                   <div>
-                    <dt className="text-xs font-semibold tracking-wide text-ink-muted uppercase">
-                      Hours
+                    <dt className="text-xs font-semibold text-ink-muted uppercase">
+                      Office Hours
                     </dt>
                     <dd className="mt-0.5 text-base font-medium text-ink">
                       Monday to Friday, 9:00 AM to 5:30 PM
@@ -330,41 +347,90 @@ export function ConsultationSection({
                   </div>
                 </div>
               </dl>
+
+              <ul
+                aria-label="Office amenities"
+                className="mt-6 flex flex-wrap gap-2"
+              >
+                {OFFICE_AMENITIES.map((item) => (
+                  <li
+                    key={item}
+                    className="rounded-full border border-border-subtle bg-white px-3 py-1 text-xs font-medium text-ink-muted"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <div className="rounded-2xl border border-border-subtle bg-surface-soft p-5">
-              <div className="flex items-start gap-3">
-                <Info
-                  size={20}
-                  weight="bold"
-                  className="mt-0.5 shrink-0 text-accent"
-                  aria-hidden="true"
-                />
-                <div>
-                  <p className="text-sm font-semibold text-ink">
-                    Before this preview goes live
-                  </p>
-                  <p className="mt-1 text-sm leading-relaxed text-ink-muted">
-                    Connect this consultation form to a secure agency inbox and
-                    insert verified California DOI licensing, carrier
-                    appointments, and Medicare/privacy disclosures.
-                  </p>
+            {/* Verified Client Review */}
+            <div className="rounded-2xl border border-border-subtle bg-white p-6">
+              <div className="flex items-center justify-between gap-2">
+                <div
+                  className="flex items-center gap-1 text-accent"
+                  aria-label="5 out of 5 stars"
+                >
+                  <Star size={16} weight="fill" aria-hidden="true" />
+                  <Star size={16} weight="fill" aria-hidden="true" />
+                  <Star size={16} weight="fill" aria-hidden="true" />
+                  <Star size={16} weight="fill" aria-hidden="true" />
+                  <Star size={16} weight="fill" aria-hidden="true" />
                 </div>
+                <a
+                  href="https://david-cutting-insurance-services.ueniweb.com/reviews"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-accent hover:underline"
+                >
+                  <span>4 public reviews</span>
+                  <ArrowUpRight size={13} weight="bold" aria-hidden="true" />
+                </a>
               </div>
+              <blockquote className="mt-3 text-sm leading-relaxed text-ink">
+                “Very friendly customer service, fast and best prices possible!
+                I have referred friends to David Cutting Insurance.”
+              </blockquote>
+              <p className="mt-2 text-xs font-semibold text-ink-muted">
+                Rachelle Fielding
+              </p>
+            </div>
+
+            {/* Compact FAQ */}
+            <div className="space-y-2.5" data-agent="faq-accordion">
+              <p className="text-sm font-semibold text-ink">Quick Questions</p>
+              {HEALTH_FAQS.map((item) => (
+                <details
+                  key={item.id}
+                  className="faq-details rounded-xl border border-border-subtle bg-white transition-colors hover:border-accent/40"
+                >
+                  <summary className="flex min-h-[52px] cursor-pointer items-center justify-between gap-3 rounded-xl px-4 py-3 text-left text-sm font-semibold text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                    <span>{item.question}</span>
+                    <CaretDown
+                      size={16}
+                      weight="bold"
+                      className="faq-chevron shrink-0 text-accent"
+                      aria-hidden="true"
+                    />
+                  </summary>
+                  <div className="border-t border-border-subtle/70 px-4 pt-3 pb-4 text-sm leading-relaxed text-ink-muted">
+                    {item.answer}
+                  </div>
+                </details>
+              ))}
             </div>
           </div>
 
           <div className="lg:col-span-7">
-            <div className="rounded-3xl border border-border-subtle bg-surface p-6 shadow-sm sm:p-8 lg:p-10">
+            <div className="rounded-3xl border border-border-subtle bg-white p-6 shadow-sm sm:p-8 lg:p-10">
               <h3
                 id="consultation-form-heading"
-                className="text-2xl font-bold tracking-tight text-ink"
+                className="text-2xl font-semibold tracking-tight text-ink"
               >
-                Request a health coverage review
+                Request a Free Health Quote
               </h3>
               <p className="mt-1.5 text-sm text-ink-muted">
-                All fields are required. Preview form only: no details are
-                transmitted from this demo.
+                All fields are required. Preview form only: no details are sent
+                from this demo.
               </p>
 
               {submittedSummary ? (
@@ -402,7 +468,7 @@ export function ConsultationSection({
                       <button
                         type="button"
                         onClick={() => setSubmittedSummary(null)}
-                        className="mt-4 inline-flex min-h-[44px] items-center rounded-full border border-border-subtle bg-surface px-5 py-2 text-sm font-semibold text-ink transition-colors hover:bg-surface-soft active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                        className="mt-4 inline-flex min-h-[44px] items-center rounded-full border border-border-subtle bg-white px-5 py-2 text-sm font-semibold text-ink transition-colors hover:bg-surface-soft active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                       >
                         Edit request details
                       </button>
@@ -424,7 +490,10 @@ export function ConsultationSection({
                       htmlFor="client-name"
                       className="block text-sm font-semibold text-ink"
                     >
-                      Full name <span aria-hidden="true" className="text-accent">*</span>
+                      Full name{" "}
+                      <span aria-hidden="true" className="text-accent">
+                        *
+                      </span>
                     </label>
                     <input
                       ref={nameInputRef}
@@ -440,7 +509,7 @@ export function ConsultationSection({
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
                       placeholder="Jordan Alvarez"
-                      className="form-control mt-1.5 w-full rounded-xl border border-border-subtle bg-canvas px-4 py-3 text-ink placeholder:text-ink-muted/60 focus:border-accent focus:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                      className="form-control mt-1.5 w-full rounded-xl border border-border-subtle bg-surface-soft px-4 py-3 text-ink placeholder:text-ink-muted/60 focus:border-accent focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                     />
                     <div id="client-name-error" className="error-msg">
                       <WarningCircle size={16} weight="fill" aria-hidden="true" />
@@ -454,9 +523,15 @@ export function ConsultationSection({
                         htmlFor="client-phone"
                         className="block text-sm font-semibold text-ink"
                       >
-                        Phone number <span aria-hidden="true" className="text-accent">*</span>
+                        Phone number{" "}
+                        <span aria-hidden="true" className="text-accent">
+                          *
+                        </span>
                       </label>
-                      <span id="phone-hint" className="mt-0.5 block text-xs text-ink-muted">
+                      <span
+                        id="phone-hint"
+                        className="mt-0.5 block text-xs text-ink-muted"
+                      >
                         Format: (909) 555-0142
                       </span>
                       <input
@@ -474,7 +549,7 @@ export function ConsultationSection({
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="(909) 555-0142"
-                        className="form-control mt-1.5 w-full rounded-xl border border-border-subtle bg-canvas px-4 py-3 text-ink placeholder:text-ink-muted/60 focus:border-accent focus:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                        className="form-control mt-1.5 w-full rounded-xl border border-border-subtle bg-surface-soft px-4 py-3 text-ink placeholder:text-ink-muted/60 focus:border-accent focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                       />
                       <div id="client-phone-error" className="error-msg">
                         <WarningCircle size={16} weight="fill" aria-hidden="true" />
@@ -487,9 +562,15 @@ export function ConsultationSection({
                         htmlFor="client-email"
                         className="block text-sm font-semibold text-ink"
                       >
-                        Email address <span aria-hidden="true" className="text-accent">*</span>
+                        Email address{" "}
+                        <span aria-hidden="true" className="text-accent">
+                          *
+                        </span>
                       </label>
-                      <span id="email-hint" className="mt-0.5 block text-xs text-ink-muted">
+                      <span
+                        id="email-hint"
+                        className="mt-0.5 block text-xs text-ink-muted"
+                      >
                         Format: you@example.com
                       </span>
                       <input
@@ -508,7 +589,7 @@ export function ConsultationSection({
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="you@example.com"
-                        className="form-control mt-1.5 w-full rounded-xl border border-border-subtle bg-canvas px-4 py-3 text-ink placeholder:text-ink-muted/60 focus:border-accent focus:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                        className="form-control mt-1.5 w-full rounded-xl border border-border-subtle bg-surface-soft px-4 py-3 text-ink placeholder:text-ink-muted/60 focus:border-accent focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                       />
                       <div id="client-email-error" className="error-msg">
                         <WarningCircle size={16} weight="fill" aria-hidden="true" />
@@ -524,7 +605,10 @@ export function ConsultationSection({
                       htmlFor="coverage-topic"
                       className="block text-sm font-semibold text-ink"
                     >
-                      Health coverage topic <span aria-hidden="true" className="text-accent">*</span>
+                      Health coverage topic{" "}
+                      <span aria-hidden="true" className="text-accent">
+                        *
+                      </span>
                     </label>
                     <select
                       id="coverage-topic"
@@ -534,7 +618,7 @@ export function ConsultationSection({
                       data-error="coverage-topic-error"
                       value={selectedPlan}
                       onChange={(e) => onSelectedPlanChange(e.target.value)}
-                      className="form-control mt-1.5 w-full rounded-xl border border-border-subtle bg-canvas px-4 py-3 text-ink focus:border-accent focus:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                      className="form-control mt-1.5 w-full rounded-xl border border-border-subtle bg-surface-soft px-4 py-3 text-ink focus:border-accent focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                     >
                       <option value="">Choose a health plan category</option>
                       {CONSULTATION_OPTIONS.map((option) => (
@@ -554,10 +638,17 @@ export function ConsultationSection({
                       htmlFor="coverage-details"
                       className="block text-sm font-semibold text-ink"
                     >
-                      Doctors, timing, or questions <span aria-hidden="true" className="text-accent">*</span>
+                      Doctors, timing, or questions{" "}
+                      <span aria-hidden="true" className="text-accent">
+                        *
+                      </span>
                     </label>
-                    <span id="details-hint" className="mt-0.5 block text-xs text-ink-muted">
-                      Share your preferred doctors, renewal date, or household size.
+                    <span
+                      id="details-hint"
+                      className="mt-0.5 block text-xs text-ink-muted"
+                    >
+                      Share your preferred doctors, renewal date, or household
+                      size.
                     </span>
                     <textarea
                       id="coverage-details"
@@ -572,13 +663,13 @@ export function ConsultationSection({
                       value={prefilledNotes}
                       onChange={(e) => onPrefilledNotesChange(e.target.value)}
                       placeholder="Example: Looking to keep our Upland primary doctor while comparing Covered California Silver plans."
-                      className="form-control mt-1.5 w-full resize-y rounded-xl border border-border-subtle bg-canvas px-4 py-3 text-ink placeholder:text-ink-muted/60 focus:border-accent focus:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                      className="form-control mt-1.5 w-full resize-y rounded-xl border border-border-subtle bg-surface-soft px-4 py-3 text-ink placeholder:text-ink-muted/60 focus:border-accent focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                     />
                     <div id="coverage-details-error" className="error-msg">
                       <WarningCircle size={16} weight="fill" aria-hidden="true" />
                       <span>
-                        Please include a short note (at least 8 characters) about
-                        what you are comparing.
+                        Please include a short note (at least 8 characters)
+                        about what you are comparing.
                       </span>
                     </div>
                   </div>
@@ -586,12 +677,27 @@ export function ConsultationSection({
                   <button
                     type="submit"
                     data-agent="consultation-submit"
-                    className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full bg-accent px-6 py-3.5 text-base font-semibold text-white shadow-sm transition-all duration-150 hover:bg-accent-hover hover:scale-[1.01] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                    className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full bg-accent px-6 py-3.5 text-base font-semibold text-white shadow-sm transition-all duration-150 hover:bg-accent-hover active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                   >
                     Request a consultation
                   </button>
                 </form>
               )}
+
+              <div className="mt-6 flex items-start gap-2.5 rounded-2xl border border-border-subtle bg-surface-soft p-4">
+                <Info
+                  size={18}
+                  weight="bold"
+                  className="mt-0.5 shrink-0 text-accent"
+                  aria-hidden="true"
+                />
+                <p className="text-xs leading-relaxed text-ink-muted">
+                  Before going live, connect this consultation form to a secure
+                  agency inbox and add verified California Department of
+                  Insurance license numbers, carrier appointments, and privacy
+                  disclosures.
+                </p>
+              </div>
             </div>
           </div>
         </div>
