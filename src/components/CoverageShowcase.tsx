@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Check } from "@phosphor-icons/react";
-import { HEALTH_PLAN_CATEGORIES } from "@/data/healthPlans";
+import { COVERAGE_CATEGORIES } from "@/data/healthPlans";
 
 interface CoverageShowcaseProps {
   onSelectPlanForConsultation: (formOption: string, contextNote?: string) => void;
@@ -19,14 +19,14 @@ export function CoverageShowcase({
   onSelectPlanForConsultation,
 }: CoverageShowcaseProps) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const total = HEALTH_PLAN_CATEGORIES.length;
+  const total = COVERAGE_CATEGORIES.length;
 
   const prevIndex = (activeIndex - 1 + total) % total;
   const nextIndex = (activeIndex + 1) % total;
 
-  const activeCategory = HEALTH_PLAN_CATEGORIES[activeIndex];
-  const prevCategory = HEALTH_PLAN_CATEGORIES[prevIndex];
-  const nextCategory = HEALTH_PLAN_CATEGORIES[nextIndex];
+  const activeCategory = COVERAGE_CATEGORIES[activeIndex];
+  const prevCategory = COVERAGE_CATEGORIES[prevIndex];
+  const nextCategory = COVERAGE_CATEGORIES[nextIndex];
 
   const handlePrev = () => {
     setActiveIndex((prev) => (prev - 1 + total) % total);
@@ -50,11 +50,11 @@ export function CoverageShowcase({
               aria-hidden="true"
               className="inline-block h-2 w-2 rounded-full bg-white"
             />
-            <span>Health Coverage Services</span>
+            <span>Brokerage Coverage Services</span>
           </div>
 
           <h2 id="coverage-heading" className="visually-hidden">
-            Health Insurance Coverage Categories
+            Auto, Home, Commercial Business, and Health Care Insurance
           </h2>
         </div>
 
@@ -83,7 +83,7 @@ export function CoverageShowcase({
           <div className="md:col-span-6">
             <div className="overflow-hidden rounded-3xl border border-white/20 bg-white p-2 shadow-2xl">
               <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-navy-soft">
-                {HEALTH_PLAN_CATEGORIES.map((category, idx) => (
+                {COVERAGE_CATEGORIES.map((category, idx) => (
                   <Image
                     key={category.id}
                     src={category.image}
@@ -92,7 +92,9 @@ export function CoverageShowcase({
                     sizes="(max-width: 768px) 100vw, 560px"
                     aria-hidden={idx !== activeIndex}
                     className={`object-cover transition-opacity duration-200 ${
-                      idx === activeIndex ? "opacity-100" : "pointer-events-none opacity-0"
+                      idx === activeIndex
+                        ? "opacity-100"
+                        : "pointer-events-none opacity-0"
                     }`}
                   />
                 ))}
@@ -121,14 +123,14 @@ export function CoverageShowcase({
           </button>
         </div>
 
-        {/* Active track quick pills for direct selection */}
+        {/* Active track quick pills ordered by brokerage priority */}
         <div
           role="tablist"
-          aria-label="Health plan categories"
+          aria-label="Insurance brokerage coverage tracks"
           data-agent="coverage-tabs"
           className="mt-8 flex flex-wrap justify-center gap-2"
         >
-          {HEALTH_PLAN_CATEGORIES.map((category, idx) => {
+          {COVERAGE_CATEGORIES.map((category, idx) => {
             const active = idx === activeIndex;
             return (
               <button
@@ -153,7 +155,7 @@ export function CoverageShowcase({
         {/* Centered active details + carousel arrows */}
         <div className="mx-auto mt-8 max-w-2xl text-center">
           <p className="text-sm font-medium text-blue-200">
-            {activeCategory.subtitle}
+            {activeCategory.priorityTag} · {activeCategory.subtitle}
           </p>
           <h3 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
             {activeCategory.title}
@@ -180,7 +182,7 @@ export function CoverageShowcase({
             <button
               type="button"
               onClick={handlePrev}
-              aria-label="Previous health coverage option"
+              aria-label="Previous coverage option"
               data-agent="coverage-prev"
               className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-ink shadow-sm transition-transform duration-150 hover:scale-105 active:scale-[0.96] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
@@ -193,19 +195,19 @@ export function CoverageShowcase({
               onClick={() =>
                 onSelectPlanForConsultation(
                   activeCategory.formOption,
-                  `Interested in ${activeCategory.title}.`
+                  `Interested in comparing ${activeCategory.title}.`
                 )
               }
               className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-white/30 bg-white/15 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-md transition-all duration-150 hover:bg-white hover:text-ink active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
-              <span>Discuss {activeCategory.shortLabel}</span>
+              <span>Compare {activeCategory.shortLabel}</span>
               <ArrowUpRight size={16} weight="bold" aria-hidden="true" />
             </button>
 
             <button
               type="button"
               onClick={handleNext}
-              aria-label="Next health coverage option"
+              aria-label="Next coverage option"
               data-agent="coverage-next"
               className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-ink shadow-sm transition-transform duration-150 hover:scale-105 active:scale-[0.96] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >

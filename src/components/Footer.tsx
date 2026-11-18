@@ -8,11 +8,15 @@ export function Footer() {
           <div className="flex flex-col items-start gap-2">
             <Image
               src="/images/david-cutting-logo.png"
-              alt="David Cutting Insurance"
+              alt="David Cutting Insurance Services"
               width={1340}
               height={320}
               className="h-9 w-auto object-contain sm:h-10"
             />
+            <p className="text-sm text-ink-muted">
+              David Cutting Insurance Services · Independent Broker · CA License
+              #0752131
+            </p>
             <p className="text-sm text-ink-muted">
               163 S Euclid Ave, Upland, CA 91786 · (909) 985-8098
             </p>
@@ -57,10 +61,10 @@ export function Footer() {
 
         <div className="mt-8 border-t border-border-subtle pt-6 text-xs leading-relaxed text-ink-muted">
           <p>
-            Preview health insurance design for David Cutting Insurance
-            Services. Add verified California Department of Insurance license
-            numbers, carrier appointments, and official privacy disclosures
-            before production launch.
+            David Cutting Insurance Services operates as an independent
+            California insurance broker (CA License #0752131), not an insurance
+            underwriting company. Coverage availability, terms, and rates
+            depend on carrier underwriting guidelines.
           </p>
         </div>
       </div>

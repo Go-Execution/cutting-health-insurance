@@ -6,13 +6,13 @@ import {
   CaretDown,
   CheckCircle,
   Clock,
-  Info,
+  IdentificationCard,
   MapPin,
   Phone,
   Star,
   WarningCircle,
 } from "@phosphor-icons/react";
-import { CONSULTATION_OPTIONS, HEALTH_FAQS } from "@/data/healthPlans";
+import { BROKER_FAQS, CONSULTATION_OPTIONS } from "@/data/healthPlans";
 
 interface ConsultationSectionProps {
   selectedPlan: string;
@@ -23,6 +23,7 @@ interface ConsultationSectionProps {
 }
 
 const OFFICE_AMENITIES = [
+  "Independent broker",
   "Free consultation",
   "In person or by phone",
   "Wheelchair accessible",
@@ -276,20 +277,20 @@ export function ConsultationSection({
                   aria-hidden="true"
                   className="inline-block h-2 w-2 rounded-full bg-accent"
                 />
-                <span>Upland Office · Consultation</span>
+                <span>David Cutting Insurance Services · Upland, CA</span>
               </div>
 
               <h2
                 id="contact-heading"
                 className="mt-4 text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
               >
-                Speak directly with David Cutting Insurance.
+                Request a multi-carrier quote directly.
               </h2>
 
               <p className="mt-4 text-base leading-relaxed text-ink-muted">
-                Call for straightforward answers or leave your preferred health
-                coverage topic below. There is zero obligation and no added
-                broker fee.
+                Call for straightforward guidance across auto and home,
+                commercial business, or health care coverage. As an independent
+                broker, we compare policies on your behalf with zero obligation.
               </p>
 
               <dl className="mt-8 space-y-5">
@@ -346,6 +347,24 @@ export function ConsultationSection({
                     </dd>
                   </div>
                 </div>
+
+                <div className="flex items-start gap-3.5">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent">
+                    <IdentificationCard
+                      size={18}
+                      weight="bold"
+                      aria-hidden="true"
+                    />
+                  </span>
+                  <div>
+                    <dt className="text-xs font-semibold text-ink-muted uppercase">
+                      California Insurance License
+                    </dt>
+                    <dd className="mt-0.5 text-base font-semibold text-ink">
+                      License #0752131 (Independent Insurance Broker)
+                    </dd>
+                  </div>
+                </div>
               </dl>
 
               <ul
@@ -398,7 +417,7 @@ export function ConsultationSection({
             {/* Compact FAQ */}
             <div className="space-y-2.5" data-agent="faq-accordion">
               <p className="text-sm font-semibold text-ink">Quick Questions</p>
-              {HEALTH_FAQS.map((item) => (
+              {BROKER_FAQS.map((item) => (
                 <details
                   key={item.id}
                   className="faq-details rounded-xl border border-border-subtle bg-white transition-colors hover:border-accent/40"
@@ -426,7 +445,7 @@ export function ConsultationSection({
                 id="consultation-form-heading"
                 className="text-2xl font-semibold tracking-tight text-ink"
               >
-                Request a Free Health Quote
+                Request a Free Quote Comparison
               </h3>
               <p className="mt-1.5 text-sm text-ink-muted">
                 All fields are required. Preview form only: no details are sent
@@ -451,7 +470,7 @@ export function ConsultationSection({
                         Preview request ready for {submittedSummary.name}
                       </p>
                       <p className="mt-1.5 text-base leading-relaxed text-ink-muted">
-                        Selected track:{" "}
+                        Selected coverage:{" "}
                         <span className="font-semibold text-ink">
                           {submittedSummary.plan}
                         </span>
@@ -463,7 +482,7 @@ export function ConsultationSection({
                         >
                           (909) 985-8098
                         </a>{" "}
-                        to speak with David directly.
+                        to speak with David Cutting directly.
                       </p>
                       <button
                         type="button"
@@ -605,7 +624,7 @@ export function ConsultationSection({
                       htmlFor="coverage-topic"
                       className="block text-sm font-semibold text-ink"
                     >
-                      Health coverage topic{" "}
+                      Coverage you are looking for{" "}
                       <span aria-hidden="true" className="text-accent">
                         *
                       </span>
@@ -620,7 +639,7 @@ export function ConsultationSection({
                       onChange={(e) => onSelectedPlanChange(e.target.value)}
                       className="form-control mt-1.5 w-full rounded-xl border border-border-subtle bg-surface-soft px-4 py-3 text-ink focus:border-accent focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                     >
-                      <option value="">Choose a health plan category</option>
+                      <option value="">Choose a coverage category</option>
                       {CONSULTATION_OPTIONS.map((option) => (
                         <option key={option} value={option}>
                           {option}
@@ -629,7 +648,7 @@ export function ConsultationSection({
                     </select>
                     <div id="coverage-topic-error" className="error-msg">
                       <WarningCircle size={16} weight="fill" aria-hidden="true" />
-                      <span>Please choose a health coverage category.</span>
+                      <span>Please choose a coverage category.</span>
                     </div>
                   </div>
 
@@ -638,7 +657,7 @@ export function ConsultationSection({
                       htmlFor="coverage-details"
                       className="block text-sm font-semibold text-ink"
                     >
-                      Doctors, timing, or questions{" "}
+                      Vehicles, property, business, or health details{" "}
                       <span aria-hidden="true" className="text-accent">
                         *
                       </span>
@@ -647,8 +666,7 @@ export function ConsultationSection({
                       id="details-hint"
                       className="mt-0.5 block text-xs text-ink-muted"
                     >
-                      Share your preferred doctors, renewal date, or household
-                      size.
+                      Share what you want to quote, renewal dates, or questions.
                     </span>
                     <textarea
                       id="coverage-details"
@@ -662,7 +680,7 @@ export function ConsultationSection({
                       data-error="coverage-details-error"
                       value={prefilledNotes}
                       onChange={(e) => onPrefilledNotesChange(e.target.value)}
-                      placeholder="Example: Looking to keep our Upland primary doctor while comparing Covered California Silver plans."
+                      placeholder="Example: Comparing an auto and homeowners renewal in Upland, plus general liability for a 6-person business."
                       className="form-control mt-1.5 w-full resize-y rounded-xl border border-border-subtle bg-surface-soft px-4 py-3 text-ink placeholder:text-ink-muted/60 focus:border-accent focus:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                     />
                     <div id="coverage-details-error" className="error-msg">
@@ -684,18 +702,12 @@ export function ConsultationSection({
                 </form>
               )}
 
-              <div className="mt-6 flex items-start gap-2.5 rounded-2xl border border-border-subtle bg-surface-soft p-4">
-                <Info
-                  size={18}
-                  weight="bold"
-                  className="mt-0.5 shrink-0 text-accent"
-                  aria-hidden="true"
-                />
+              <div className="mt-6 rounded-2xl border border-border-subtle bg-surface-soft p-4">
                 <p className="text-xs leading-relaxed text-ink-muted">
-                  Before going live, connect this consultation form to a secure
-                  agency inbox and add verified California Department of
-                  Insurance license numbers, carrier appointments, and privacy
-                  disclosures.
+                  David Cutting Insurance Services is an independent insurance
+                  brokerage (CA Insurance License #0752131), not an insurance
+                  carrier. Connect this preview form to a secure agency inbox
+                  and carrier/privacy disclosures prior to live lead intake.
                 </p>
               </div>
             </div>

@@ -14,7 +14,7 @@ export function HeroSection() {
         <div className="relative min-h-[540px] w-full sm:min-h-[600px] lg:min-h-[640px]">
           <Image
             src="/images/hero-family.jpg"
-            alt="Smiling California grandfather and child seated together on a sunlit living room sofa"
+            alt="Smiling California family members seated together in a bright sunlit living room"
             fill
             priority
             sizes="(max-width: 1280px) 100vw, 1280px"
@@ -24,7 +24,7 @@ export function HeroSection() {
           {/* Subtle left-side scrim for crisp white headline legibility */}
           <div
             aria-hidden="true"
-            className="absolute inset-0 bg-gradient-to-r from-[#07254e]/85 via-[#07254e]/45 to-[#07254e]/10"
+            className="absolute inset-0 bg-gradient-to-r from-[#07254e]/85 via-[#07254e]/50 to-[#07254e]/10"
           />
           <div
             aria-hidden="true"
@@ -34,16 +34,17 @@ export function HeroSection() {
           <div className="relative z-10 flex min-h-[540px] flex-col justify-between p-6 sm:min-h-[600px] sm:p-10 lg:min-h-[640px] lg:p-14">
             <div className="max-w-2xl pt-2 sm:pt-4">
               <p className="inline-flex items-center rounded-full border border-white/25 bg-white/15 px-4 py-1.5 text-xs font-medium text-white backdrop-blur-md sm:text-sm">
-                Your health, your family, our commitment to care.
+                Independent California Insurance Broker · CA License #0752131
               </p>
 
               <h1 className="mt-6 text-4xl font-semibold tracking-tight text-white leading-[1.08] sm:text-5xl lg:text-6xl">
-                Your Health Deserves The Best Protection
+                Auto, Home & Business Coverage Built Around You
               </h1>
 
               <p className="mt-5 max-w-lg text-base leading-relaxed text-white/90 sm:text-lg">
-                Clear guidance for Covered California, Medicare, and small
-                business health plans in Upland, California.
+                David Cutting Insurance Services compares multiple carriers for
+                your auto and home, commercial business, and health care
+                coverage in Upland, CA.
               </p>
             </div>
 
@@ -80,7 +81,7 @@ export function HeroSection() {
                 <div className="relative h-16 w-24 shrink-0 overflow-hidden rounded-xl bg-surface-soft">
                   <Image
                     src="/images/hero-consultation.jpg"
-                    alt="In-person consultation at David Cutting Insurance"
+                    alt="In-person consultation at David Cutting Insurance Services"
                     fill
                     sizes="96px"
                     className="object-cover"
@@ -88,7 +89,7 @@ export function HeroSection() {
                 </div>
                 <div className="text-left">
                   <p className="text-xs font-semibold text-accent">
-                    Free Plan Review
+                    CA License #0752131
                   </p>
                   <p className="mt-0.5 text-sm font-semibold text-ink">
                     Upland Office or Phone

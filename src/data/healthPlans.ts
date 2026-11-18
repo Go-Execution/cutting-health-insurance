@@ -1,12 +1,12 @@
 export type PlanCategoryId =
-  | "individual"
-  | "medicare"
-  | "group"
-  | "supplemental";
+  | "auto-home"
+  | "commercial"
+  | "healthcare"
+  | "umbrella-life";
 
-export interface HealthPlanCategory {
+export interface CoverageCategory {
   id: PlanCategoryId;
-  code: string;
+  priorityTag: string;
   shortLabel: string;
   title: string;
   subtitle: string;
@@ -17,87 +17,89 @@ export interface HealthPlanCategory {
   highlights: string[];
 }
 
-export const HEALTH_PLAN_CATEGORIES: HealthPlanCategory[] = [
+export const COVERAGE_CATEGORIES: CoverageCategory[] = [
   {
-    id: "individual",
-    code: "01",
-    shortLabel: "Individual & Family",
-    title: "Individual & Family Health Plans",
-    subtitle: "Covered California and direct carrier options",
+    id: "auto-home",
+    priorityTag: "Primary Focus",
+    shortLabel: "Auto & Home",
+    title: "Auto & Home Insurance",
+    subtitle: "Personal auto, homeowners, condo, and bundle savings",
     summary:
-      "Compare Bronze, Silver, Gold, and Platinum medical plans side by side so your monthly premium and annual out-of-pocket limit fit how your household actually uses care.",
-    formOption: "Individual & Family Health",
+      "As an independent broker, David Cutting shops multiple California carriers to align your auto liability, collision, dwelling replacement, and personal property limits without overpaying.",
+    formOption: "Auto & Home Bundle",
+    image: "/images/coverage-auto-home.jpg",
+    imageAlt:
+      "Smiling California couple standing in front of their sunlit home with a modern sedan in the driveway",
+    highlights: [
+      "Compare multi-carrier auto and homeowners bundles",
+      "Match dwelling coverage to realistic California rebuild costs",
+      "Review uninsured motorist, glass, and deductible tradeoffs",
+    ],
+  },
+  {
+    id: "commercial",
+    priorityTag: "Commercial Focus",
+    shortLabel: "Commercial Business",
+    title: "Commercial Business Insurance",
+    subtitle: "General liability, property, commercial auto, and workers' comp",
+    summary:
+      "Protect your Upland or Inland Empire business operations, vehicles, equipment, and employees with Business Owner Policies and commercial packages tailored to your industry.",
+    formOption: "Commercial Business Insurance",
+    image: "/images/coverage-commercial.jpg",
+    imageAlt:
+      "Independent insurance broker reviewing commercial business coverage documents with a local owner",
+    highlights: [
+      "General liability and Business Owner Policies (BOP)",
+      "Commercial auto, tools, inventory, and premises coverage",
+      "Certificates of insurance and contract compliance support",
+    ],
+  },
+  {
+    id: "healthcare",
+    priorityTag: "Health Care",
+    shortLabel: "Health Care",
+    title: "Health Care & Medical Coverage",
+    subtitle: "Covered California, Medicare, and small group health",
+    summary:
+      "Compare individual, family, Medicare, and small employer health plans across networks and prescription tiers so your doctors stay covered and annual costs remain predictable.",
+    formOption: "Health Care & Medical Insurance",
     image: "/images/hero-consultation.jpg",
     imageAlt:
-      "Health insurance advisor reviewing individual medical plan comparisons with a California couple",
+      "Insurance advisor reviewing health care plan comparisons with clients in a sunlit Upland office",
     highlights: [
-      "Verify Inland Empire doctors and medical groups",
-      "Check Covered California premium tax credits",
-      "Compare HMO, EPO, PPO, and HSA-eligible tiers",
+      "Check Inland Empire doctors and prescription formularies",
+      "Evaluate Covered California tax credits and HMO/PPO tiers",
+      "Guide Turning 65 Medicare Advantage and Medigap transitions",
     ],
   },
   {
-    id: "medicare",
-    code: "02",
-    shortLabel: "Medicare & Seniors",
-    title: "Medicare, Medigap & Part D",
-    subtitle: "Turning 65 and annual plan reviews",
+    id: "umbrella-life",
+    priorityTag: "Additional Protection",
+    shortLabel: "Umbrella & Life",
+    title: "Umbrella & Life Insurance",
+    subtitle: "Extra liability and family income protection",
     summary:
-      "Understand Original Medicare, Medigap Supplement Plan G and N, and Medicare Advantage plans clearly so you avoid penalties and keep preferred doctors.",
-    formOption: "Medicare & Senior Plans",
-    image: "/images/california-couple.jpg",
-    imageAlt:
-      "Smiling couple in their 60s walking along a sunlit tree-lined sidewalk in Southern California",
-    highlights: [
-      "Compare Medigap open access vs. Advantage networks",
-      "Check prescription drug formularies at your pharmacy",
-      "Time Part B and employer transitions accurately",
-    ],
-  },
-  {
-    id: "group",
-    code: "03",
-    shortLabel: "Small Business",
-    title: "Small Business Group Benefits",
-    subtitle: "California employer teams of 1 to 100",
-    summary:
-      "Offer dependable medical, dental, and vision coverage that helps you attract local talent while keeping employer payroll contributions predictable.",
-    formOption: "Small Business Group Health",
-    image: "/images/guide-advisor-desk.jpg",
-    imageAlt:
-      "Advisor sitting at a modern desk reviewing small business employee health benefit choices",
-    highlights: [
-      "Structure employer contribution tiers cleanly",
-      "Offer dual-option HMO and PPO employee choices",
-      "Ongoing renewal reviews and staff onboarding help",
-    ],
-  },
-  {
-    id: "supplemental",
-    code: "04",
-    shortLabel: "Dental & Vision",
-    title: "Dental, Vision & Supplemental Care",
-    subtitle: "Everyday preventive care and deductible protection",
-    summary:
-      "Round out your medical coverage with PPO dental, routine vision, accident, and hospital indemnity plans built to keep surprise bills manageable.",
-    formOption: "Dental, Vision & Supplemental",
+      "Extend your auto and homeowners liability limits with an affordable personal umbrella policy, and protect family obligations with straightforward term or permanent life coverage.",
+    formOption: "Umbrella or Life Insurance",
     image: "/images/guide-family-group.jpg",
     imageAlt:
       "Multi-generational California family smiling together outdoors on a sunny patio",
     highlights: [
-      "Check dentist networks and major-service waiting periods",
-      "Predictable frame, lens, and annual eye exam benefits",
-      "Cash-benefit coverage alongside Bronze or HSA plans",
+      "Excess liability protection above auto and home caps",
+      "Term and whole life comparisons across vetted carriers",
+      "Clean coordination with existing household policies",
     ],
   },
 ];
 
 export const CONSULTATION_OPTIONS = [
-  "Individual & Family Health",
-  "Medicare & Senior Plans",
-  "Small Business Group Health",
-  "Dental, Vision & Supplemental",
-  "I am not sure which plan fits yet",
+  "Auto & Home Bundle",
+  "Auto Insurance",
+  "Homeowners / Renters Insurance",
+  "Commercial Business Insurance",
+  "Health Care & Medical Insurance",
+  "Umbrella or Life Insurance",
+  "Review all my current policies",
 ] as const;
 
 export interface ResourceGuide {
@@ -108,63 +110,63 @@ export interface ResourceGuide {
   image: string;
   imageAlt: string;
   readTime: string;
-  keyTakeaways: string[];
   formOption: string;
+  keyTakeaways: string[];
 }
 
 export const RESOURCE_GUIDES: ResourceGuide[] = [
   {
-    id: "five-checks",
-    tag: "Plan Selection",
-    title: "5 Things You Should Check Before Choosing Health Insurance",
+    id: "auto-home-bundle",
+    tag: "Auto & Home",
+    title: "5 Things To Check Before Renewing Auto And Home Insurance",
     excerpt:
-      "Choosing the right health plan starts before comparing monthly premiums. Check doctor networks, drug tiers, and annual caps first.",
+      "California auto and property rates shift quickly. Learn how an independent broker compares multiple carriers before your renewal locks in.",
+    image: "/images/coverage-auto-home.jpg",
+    imageAlt:
+      "California homeowners standing outside their home with a car parked in the driveway",
+    readTime: "3 min read",
+    formOption: "Auto & Home Bundle",
+    keyTakeaways: [
+      "Check whether your homeowners dwelling limit reflects current Inland Empire labor and material rebuild costs.",
+      "Compare raising collision/comprehensive deductibles vs. lowering liability limits: keep strong bodily injury and property damage limits.",
+      "Ask an independent broker to quote bundled and split-carrier options, since separate insurers sometimes beat a single-company discount.",
+      "Verify uninsured/underinsured motorist coverage on your auto policy to protect your household on Southern California highways.",
+      "Review multi-policy, safe-driver, and home security discounts at least 30 days ahead of renewal.",
+    ],
+  },
+  {
+    id: "commercial-coverage",
+    tag: "Commercial Business",
+    title: "How Local Businesses Structure Commercial Liability Without Gaps",
+    excerpt:
+      "From storefront premises and contractor equipment to commercial vehicles, see how to keep coverage clean as your company grows.",
+    image: "/images/coverage-commercial.jpg",
+    imageAlt:
+      "Small business owner and insurance broker reviewing commercial coverage options over a counter",
+    readTime: "4 min read",
+    formOption: "Commercial Business Insurance",
+    keyTakeaways: [
+      "Separate personal auto from commercial vehicle exposure whenever staff or business-owned vehicles make deliveries or client visits.",
+      "Bundle general liability and business property into a Business Owner Policy (BOP) when eligible for streamlined protection.",
+      "Confirm landlord, vendor, and municipal additional-insured requirements before signing a new commercial lease or job contract.",
+      "Update payroll and revenue estimates annually so workers' compensation and liability audits bring zero surprises.",
+    ],
+  },
+  {
+    id: "healthcare-choices",
+    tag: "Health Care",
+    title: "Comparing California Health Care, Medicare, And Group Plans",
+    excerpt:
+      "Whether enrolling through Covered California, turning 65, or offering team benefits, verify your doctors and prescriptions first.",
     image: "/images/guide-advisor-desk.jpg",
     imageAlt:
-      "Health insurance advisor discussing coverage documents with two clients at an office desk",
-    readTime: "3 min read",
-    formOption: "Individual & Family Health",
-    keyTakeaways: [
-      "Confirm both your primary physician and preferred medical group participate in the exact network ID, not just the carrier brand.",
-      "Look up every ongoing prescription in the plan's drug formulary to spot tier 3 or specialty copays early.",
-      "Compare the annual out-of-pocket maximum alongside twelve months of premiums to see your true worst-case cost.",
-      "Verify whether your household income qualifies for Covered California monthly tax credits or Silver CSR savings.",
-      "Check if a Qualifying Life Event gives you a 60-day Special Enrollment window outside November to January.",
-    ],
-  },
-  {
-    id: "family-budget",
-    tag: "Family Coverage",
-    title: "How To Protect Your Family's Health On Any Budget",
-    excerpt:
-      "Quality family coverage does not require overpaying for unused benefits. Learn how to balance monthly cost with real medical access.",
-    image: "/images/guide-family-group.jpg",
-    imageAlt:
-      "Multi-generational family smiling together outdoors in bright California daylight",
+      "Insurance broker discussing health care coverage documents with two clients at an office desk",
     readTime: "4 min read",
-    formOption: "Individual & Family Health",
+    formOption: "Health Care & Medical Insurance",
     keyTakeaways: [
-      "Separate routine preventive visits (covered at $0 in-network) from emergency and specialist scenarios when sizing deductibles.",
-      "Compare HMO vs. PPO pricing carefully: an HMO tied to a strong local Inland Empire medical group can save thousands per year.",
-      "Consider pairing an HSA-compatible Bronze plan with supplemental accident coverage if your family rarely visits specialists.",
-      "Review household coverage every autumn during Open Enrollment before automatic renewals take effect.",
-    ],
-  },
-  {
-    id: "medicare-guide",
-    tag: "Medicare Timing",
-    title: "A Simple Guide To Medicare Timing And Plan Choices",
-    excerpt:
-      "Turning 65 or retiring off employer health insurance comes with strict windows. Follow clear steps to avoid penalties.",
-    image: "/images/california-couple.jpg",
-    imageAlt:
-      "Active smiling senior couple walking together along a sunlit California street",
-    readTime: "4 min read",
-    formOption: "Medicare & Senior Plans",
-    keyTakeaways: [
-      "Mark your 7-month Initial Enrollment Period around your 65th birthday unless you have creditable active employer coverage.",
-      "Weigh nationwide provider flexibility under Medigap Plan G against lower monthly premiums in local Medicare Advantage plans.",
-      "Run your exact medication list each fall between October 15 and December 7 because Part D formularies update every year.",
+      "Confirm your primary physician and preferred local medical group sit inside the plan's exact network ID before comparing premiums.",
+      "Look at twelve months of premiums plus out-of-pocket maximums rather than choosing solely on the lowest monthly bill.",
+      "Prepare early for Medicare Initial Enrollment around age 65 or Special Enrollment windows after changing jobs.",
     ],
   },
 ];
@@ -175,22 +177,23 @@ export interface FaqItem {
   answer: string;
 }
 
-export const HEALTH_FAQS: FaqItem[] = [
+export const BROKER_FAQS: FaqItem[] = [
   {
-    id: "cost-broker",
-    question: "Does it cost extra to work with David Cutting Insurance?",
+    id: "broker-vs-company",
+    question:
+      "How is David Cutting Insurance Services different from an insurance company?",
     answer:
-      "No. California health insurance rates are set by the carrier and state marketplace, so your monthly premium is identical whether you enroll on your own or with David's help. Consultations are free.",
+      "David Cutting Insurance Services is an independent insurance brokerage (CA License #0752131), not an insurance company itself. Instead of selling policies from just one carrier, David shops and compares multiple insurers on your behalf to find the right fit for your auto, home, commercial business, or health care needs.",
   },
   {
-    id: "outside-open-enrollment",
-    question: "Can I enroll in a health plan outside Open Enrollment?",
+    id: "broker-fee",
+    question: "What does it cost to get quotes through an independent broker?",
     answer:
-      "Yes, if you have a Qualifying Life Event such as losing job coverage, moving, getting married, or turning 26 (usually a 60-day window). Small business group health plans can start any month.",
+      "Your consultation and policy comparison are free. You get side-by-side guidance across auto, home, commercial business, and health care options without pressure.",
   },
   {
     id: "in-person-upland",
-    question: "Can we meet in person in Upland or review options by phone?",
+    question: "Can we meet in person in Upland or handle everything by phone?",
     answer:
       "Both options are available Monday to Friday from 9:00 AM to 5:30 PM. Call (909) 985-8098 or visit 163 S Euclid Ave, Upland, CA 91786, with free parking and wheelchair-accessible entry.",
   },

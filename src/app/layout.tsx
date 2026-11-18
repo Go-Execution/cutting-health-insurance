@@ -10,9 +10,10 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "David Cutting Insurance Services | Health Insurance in Upland, CA",
+  title:
+    "David Cutting Insurance Services | Auto, Home, Business & Health Broker in Upland, CA",
   description:
-    "Simple, transparent health insurance guidance for California individuals, families, Medicare beneficiaries, and small businesses in Upland, CA.",
+    "Independent California insurance broker (CA License #0752131) in Upland, CA comparing multiple carriers for auto and home insurance, commercial business coverage, and health care plans.",
 };
 
 export default function RootLayout({

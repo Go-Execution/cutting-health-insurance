@@ -37,12 +37,11 @@ export function ResourcesSection({
             id="resources-heading"
             className="max-w-lg text-3xl font-semibold tracking-tight text-ink leading-[1.15] sm:text-4xl"
           >
-            Expert Tips For A Healthier, Protected Life
+            Practical Insights For Smarter California Coverage
           </h2>
           <p className="max-w-md text-base leading-relaxed text-ink-muted">
-            Discover practical California health insurance insights, enrollment
-            deadlines, and straightforward checklists to help you compare plans
-            with confidence.
+            Clear broker notes on auto and home renewals, commercial business
+            liability, and health care plan comparisons.
           </p>
         </div>
 
@@ -81,9 +80,7 @@ export function ResourcesSection({
                     type="button"
                     aria-expanded={isOpen}
                     data-agent={`guide-read-${guide.id}`}
-                    onClick={() =>
-                      setSelectedGuide(isOpen ? null : guide)
-                    }
+                    onClick={() => setSelectedGuide(isOpen ? null : guide)}
                     className="inline-flex min-h-[40px] items-center gap-1.5 text-sm font-semibold text-accent transition-colors hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                   >
                     <span>{isOpen ? "Hide checklist" : "Read key points"}</span>
@@ -162,7 +159,7 @@ export function ResourcesSection({
             data-agent="resources-consult-cta"
             className="inline-flex min-h-[48px] items-center gap-2.5 rounded-full bg-ink py-1.5 pr-1.5 pl-5 text-sm font-semibold text-white shadow-sm transition-all duration-150 hover:bg-accent active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
-            <span>Schedule Free Consultation</span>
+            <span>Request Multi-Carrier Quote</span>
             <span
               aria-hidden="true"
               className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-ink"
